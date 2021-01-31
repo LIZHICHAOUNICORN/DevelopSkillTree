@@ -63,7 +63,7 @@ rank: 进程组的索引。
 #### 2.1 点对点通信
 
 如下图，数据从一个进程到另外一个进程，这个操作被称为点对点通信。  
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/send_recv.png)
 因为点对点通信实现支持已经在pytorch 1.1中depressed了，下面可以看做是伪代码。  
 
 ```
@@ -95,6 +95,7 @@ def run(rank, size):
 ```
 
 代码运行结果图：
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/all_reduce_result.png)
 
 #### 2.2.1 集体通信方式支持
 
@@ -106,20 +107,18 @@ all-reduce：将操作op在进程组中执行，把结果放到所有进程中�
 broadcast：把变量分发给进程组中每个变量  
 all-gather：收集进程组中的变量值，将结果复制到进程组的每个进程。  
 
-图3 Scatter
-
-
-图4 Gather
-
-
-图5 Reduce
-
-图6 All-Reduce
-
-图7 Broadcast
-
-图8 All-Gather
-
+图3 Scatter  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/scatter.png)  
+图4 Gather  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/gather.png)  
+图5 Reduce  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/reduce.png)  
+图6 All-Reduce  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/all_reduce.png)  
+图7 Broadcast  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/broadcast.png)  
+图8 All-Gather  
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/all_gather.png)  
 #### 2.2.1 集体通信操作支持
 
 dist.reduce_op.SUM： 求和  
@@ -129,8 +128,7 @@ dist.reduce_op.MIN：求最小值
 
 ### 03 分布式训练 hello world
 
-数据集分割：
-
+数据集分割：  
 ```
 """ Dataset partitioning helper """
 class Partition(object):
@@ -166,8 +164,7 @@ class DataPartitioner(object):
     def use(self, partition):
         return Partition(self.data, self.partitions[partition])
 ```
-对mnist数据集进行分割
-
+对mnist数据集进行分割  
 ```
 """ Partitioning MNIST """
 def partition_dataset():
@@ -186,8 +183,7 @@ def partition_dataset():
                                          shuffle=True)
     return train_set, bsz
 ```
-使用异步sgd作为optimizer
-
+使用异步sgd作为optimizer  
 ```
 """ Distributed Synchronous SGD Example """
 def run(rank, size):
@@ -211,7 +207,7 @@ def run(rank, size):
         print('Rank ', dist.get_rank(), ', epoch ',
               epoch, ': ', epoch_loss / num_batches)
 ```
-在训练过程中对梯度进行平均。
+在训练过程中对梯度进行平均。  
 ```
 """ Gradient averaging. """
 def average_gradients(model):
@@ -231,7 +227,7 @@ def average_gradients(model):
 2. mpi
 3. nccl
 下面是他们对device支持以及通信方式的支持对比。
-
+![](https://github.com/LIZHICHAOUNICORN/MachineLearningWorkflow/blob/main/pytorch_distributed/pic/backend.png)  
  
 ### 05 Reference
 https://pytorch.org/tutorials/intermediate/dist_tuto.html

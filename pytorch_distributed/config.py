@@ -21,7 +21,7 @@ def _add_demo_args(parser):
     group = parser.add_argument_group(title="pytorch distrubited Setup")
     group.add_argument('--size', required=False,
                         type=int, action='store',
-                        default=48, dest='size')
+                        default=2, dest='size')
     return parser
 
 def parse_args(extra_args_provider=None, defaults={},

@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(implement_trie_prefix_tree implement_trie_prefix_tree.cc)
+target_link_libraries(implement_trie_prefix_tree gflags_nothreads glog unwind)

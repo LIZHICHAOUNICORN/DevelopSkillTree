@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(unique_paths unique_paths.cc)
+target_link_libraries(unique_paths gflags_nothreads glog unwind)
+
+add_executable(unique_paths_ii unique_paths_ii.cc)
+target_link_libraries(unique_paths_ii gflags_nothreads glog unwind)
+
+add_executable(longest_common_subsequence longest_common_subsequence.cc)
+target_link_libraries(longest_common_subsequence gflags_nothreads glog unwind)
+
+add_executable(triangle triangle.cc)
+target_link_libraries(triangle gflags_nothreads glog unwind)
+
+add_executable(maximum_subarray maximum_subarray.cc)
+target_link_libraries(maximum_subarray gflags_nothreads glog unwind)
+
+add_executable(house_robber house_robber.cc)
+target_link_libraries(house_robber gflags_nothreads glog unwind)
+
+add_executable(house_robber_ii house_robber_ii.cc)
+target_link_libraries(house_robber_ii gflags_nothreads glog unwind)
+
+add_executable(house_robber_iii house_robber_iii.cc)
+target_link_libraries(house_robber_iii gflags_nothreads glog unwind)
+
+add_executable(dy_best_time_to_buy_and_sell_stock best_time_to_buy_and_sell_stock.cc)
+target_link_libraries(dy_best_time_to_buy_and_sell_stock gflags_nothreads glog unwind)
+
+add_executable(dy_best_time_to_buy_and_sell_stock_ii best_time_to_buy_and_sell_stock_ii.cc)
+target_link_libraries(dy_best_time_to_buy_and_sell_stock_ii gflags_nothreads glog unwind)
+
+add_executable(best_time_to_buy_and_sell_stock_iii best_time_to_buy_and_sell_stock_iii.cc)
+target_link_libraries(best_time_to_buy_and_sell_stock_iii gflags_nothreads glog unwind)
+
+add_executable(best_time_to_buy_and_sell_stock_iv best_time_to_buy_and_sell_stock_iv.cc)
+target_link_libraries(best_time_to_buy_and_sell_stock_iv gflags_nothreads glog unwind)
+
+add_executable(best_time_to_buy_and_sell_stock_with_cooldown best_time_to_buy_and_sell_stock_with_cooldown.cc)
+target_link_libraries(best_time_to_buy_and_sell_stock_with_cooldown gflags_nothreads glog unwind)
+
+add_executable(best_time_to_buy_and_sell_stock_transaction_fee best_time_to_buy_and_sell_stock_transaction_fee.cc)
+target_link_libraries(best_time_to_buy_and_sell_stock_transaction_fee gflags_nothreads glog unwind)

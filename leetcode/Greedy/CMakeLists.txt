@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(lemonade_change lemonade_change.cc)
+target_link_libraries(lemonade_change gflags_nothreads glog unwind)
+
+add_executable(best_time_to_buy_and_sell_stock_ii best_time_to_buy_and_sell_stock_ii.cc)
+target_link_libraries(best_time_to_buy_and_sell_stock_ii gflags_nothreads glog unwind)
+
+add_executable(assign_cookies assign_cookies.cc)
+target_link_libraries(assign_cookies gflags_nothreads glog unwind)
+
+add_executable(walking_robot_simulation walking_robot_simulation.cc)
+target_link_libraries(walking_robot_simulation gflags_nothreads glog unwind)
+
+add_executable(jump_game jump_game.cc)
+target_link_libraries(jump_game gflags_nothreads glog unwind)
+
+add_executable(jump_game_ii jump_game_ii.cc)
+target_link_libraries(jump_game_ii gflags_nothreads glog unwind)

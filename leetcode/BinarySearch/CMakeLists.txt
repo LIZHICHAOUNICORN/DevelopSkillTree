@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(sqrtx sqrtx.cc)
+target_link_libraries(sqrtx gflags_nothreads glog unwind)
+
+add_executable(valid_perfect_square valid_perfect_square.cc)
+target_link_libraries(valid_perfect_square gflags_nothreads glog unwind)
+
+add_executable(search_in_rotated_sorted_array search_in_rotated_sorted_array.cc)
+target_link_libraries(search_in_rotated_sorted_array gflags_nothreads glog unwind)
+
+add_executable(search_a_2d_matrix search_a_2d_matrix.cc)
+target_link_libraries(search_a_2d_matrix gflags_nothreads glog unwind)
+
+add_executable(find_minimum_in_rotated_sorted_array find_minimum_in_rotated_sorted_array.cc)
+target_link_libraries(find_minimum_in_rotated_sorted_array gflags_nothreads glog unwind)

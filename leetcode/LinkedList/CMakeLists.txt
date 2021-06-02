@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.10)
+
+set(LIBCREATE_LINKED_LIST_SRC create_linked_list.h create_linked_list.cc)
+add_library(create_linked_list STATIC ${LIBCREATE_LINKED_LIST_SRC})
+
+add_executable(reverse_linked_list reverse_linked_list.cc)
+target_link_libraries(reverse_linked_list gflags_nothreads glog unwind)
+
+add_executable(linked_list_cycle linked_list_cycle.cc)
+target_link_libraries(linked_list_cycle gflags_nothreads glog unwind)
+
+add_executable(reverse_nodes_in_k_group reverse_nodes_in_k_group.cc create_linked_list.h)
+target_link_libraries(reverse_nodes_in_k_group create_linked_list gflags_nothreads glog unwind)
+
+add_executable(merge_two_sorted_lists merge_two_sorted_lists.cc create_linked_list.h)
+target_link_libraries(merge_two_sorted_lists create_linked_list gflags_nothreads glog unwind)
+
+add_executable(remove_linked_list_elements remove_linked_list_elements.cc create_linked_list.h)
+target_link_libraries(remove_linked_list_elements create_linked_list gflags_nothreads glog unwind)

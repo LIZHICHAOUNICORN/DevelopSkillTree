@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+
+# use CMAKE_CURRENT_LIST_DIR bug
+# add_subdirectory(${CMAKE_CURRENT_LIST_DIR} build)
+add_subdirectory(Array)
+add_subdirectory(LinkedList)
+add_subdirectory(Stack)
+add_subdirectory(HashTable)
+add_subdirectory(Tree)
+add_subdirectory(Recursion)
+add_subdirectory(DFS)
+add_subdirectory(BFS)
+add_subdirectory(Greedy)
+add_subdirectory(BinarySearch)
+add_subdirectory(DynamicProgramming)
+add_subdirectory(Trie)
+add_subdirectory(Bit)
+add_subdirectory(String)

@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(valid_parentheses valid_parentheses.cc)
+target_link_libraries(valid_parentheses gflags_nothreads glog unwind)
+
+add_executable(min_stack min_stack.cc)
+target_link_libraries(min_stack gflags_nothreads glog unwind)
+
+add_executable(largest_rectangle_in_histogram largest_rectangle_in_histogram.cc)
+target_link_libraries(largest_rectangle_in_histogram gflags_nothreads glog unwind)
+
+add_executable(sliding_window_maximum sliding_window_maximum.cc)
+target_link_libraries(sliding_window_maximum gflags_nothreads glog unwind)
+
+add_executable(implement_queue_using_stacks implement_queue_using_stacks.cc)
+target_link_libraries(implement_queue_using_stacks gflags_nothreads glog unwind)

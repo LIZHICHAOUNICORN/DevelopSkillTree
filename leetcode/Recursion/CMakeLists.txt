@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.10)
+
+add_executable(recursion_climbing_stairs climbing_stairs.cc)
+target_link_libraries(recursion_climbing_stairs gflags_nothreads glog unwind)
+
+add_executable(permutations permutations.cc)
+target_link_libraries(permutations gflags_nothreads glog unwind)
+
+add_executable(combinations combinations.cc)
+target_link_libraries(combinations gflags_nothreads glog unwind)
+
+add_executable(generate_parentheses generate_parentheses.cc)
+target_link_libraries(generate_parentheses gflags_nothreads glog unwind)
+
+add_executable(powx_n  powx_n.cc)
+target_link_libraries(powx_n gflags_nothreads glog unwind)
+
+add_executable(subsets subsets.cc)
+target_link_libraries(subsets gflags_nothreads glog unwind)
+
+add_executable(letter_combinations_of_a_phone_number letter_combinations_of_a_phone_number.cc)
+target_link_libraries(letter_combinations_of_a_phone_number gflags_nothreads glog unwind)
+
+add_executable(n_queens n_queens.cc)
+target_link_libraries(n_queens gflags_nothreads glog unwind tcmalloc_and_profiler)
+
+add_executable(permutations_ii permutations_ii.cc)
+target_link_libraries(permutations_ii gflags_nothreads glog unwind tcmalloc_and_profiler)

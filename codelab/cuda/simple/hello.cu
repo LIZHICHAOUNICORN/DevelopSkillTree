@@ -14,5 +14,6 @@ int main(int argc, char** argv) {
     // all resources associated with current device 
     // with the current process.
     cudaDeviceReset();
+    // cudaDeviceSynchronize();
     return 0;
 }

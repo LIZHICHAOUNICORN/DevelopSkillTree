@@ -8,6 +8,8 @@ using std::vector;
 // recursive
 // dp[m][n] = dp[m-1][n] + dp[m][n-1]
 // when m = 0 or n = 0; dp[m][n] =1
+// 深搜的深度：m+n-1
+// 节点的深度：(2^(m+n-1))-1
 class Solution {
  public:
   int uniquePaths(int m, int n){
@@ -18,29 +20,30 @@ class Solution {
     if(m < 0 || n < 0) return 0;
     if(m == 0 || n == 0) return 1;
     if(cache[m][n] > 0) return cache[m][n];
-    cache[m][n] =helper(m-1, n, cache) + helper(m, n-1, cache);;
+    cache[m][n] = helper(m-1, n, cache) + helper(m, n-1, cache);;
     return cache[m][n];
   }
 };
 
-// loop
+// Time: O(m * n)
+// Space: O(m * n)
 class Solution1 {
  public:
   int uniquePaths(int m, int n) {
     if (m == 0 || n == 0) {
       return 0;
     }
-    vector<vector<int>> dp(m, vector<int>(n));
+    vector<vector<int>> dp(m, vector<int>(n, 0));
     dp[0][0] = 1;
-    for (int i = 1; i < m; i++) {
-      dp[i][0] = dp[i - 1][0];
+    for (size_t i = 0; i < m; ++i) {
+      dp[i][0] = 1;
     }
-    for (int j = 1; j < n; j++) {
-      dp[0][j] = dp[0][j - 1];
+    for (size_t i = 0; i < n; ++i) {
+      dp[0][i] = 1;
     }
-    for (int i = 1; i < m; i++) {
-      for (int j = 1; j < n; j++) {
-        dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+    for (size_t i = 1; i < m; ++i) {
+      for (size_t j = 1; j < n; ++j) {
+        dp[i][j] = dp[i-1][j] + dp[i][j-1];
       }
     }
     return dp[m - 1][n - 1];

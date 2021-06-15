@@ -1,4 +1,4 @@
-CU_APPS=simpleDiveragence
+CU_APPS=simpleDiveragence simpleDeviceQuery
 
 all: ${CU_APPS}
 

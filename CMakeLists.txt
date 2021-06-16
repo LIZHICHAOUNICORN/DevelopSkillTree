@@ -27,11 +27,11 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 find_package(Threads)
 
-add_subdirectory(third_party/libevent)
+# add_subdirectory(third_party/libevent)
 add_subdirectory(third_party/glog)
 add_subdirectory(third_party/gflags)
-add_subdirectory(third_party/muduo)
-add_subdirectory(third_party/googletest)
+# add_subdirectory(third_party/muduo)
+# add_subdirectory(third_party/googletest)
 # add_subdirectory(third_party/googleurl)
 # add_subdirectory(third_party/abseil-cpp)
 

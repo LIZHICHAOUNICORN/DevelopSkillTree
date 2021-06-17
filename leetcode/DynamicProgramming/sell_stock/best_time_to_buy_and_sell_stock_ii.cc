@@ -6,16 +6,23 @@
 using std::vector;
 
 class Solution {
- public:
-  int maxProfit(vector<int>& prices) {
-    int profit = 0;
-    for (size_t i = 1; i < prices.size(); ++i) {
-      if (prices[i] - prices[i-1] > 0) {
-        profit += prices[i] - prices[i-1];
-      }
+public:
+    // status: 目前是否有股票
+    // index: 第几天
+    // profix: 当前收益
+    int GetProfit(vector<int>& prices, int index, bool status, int profit) {
+        if (index >= prices.size()) return max(0, profit);
+        if (status) {
+            return max(GetProfit(prices, index+1, false,  profit+prices[index]),
+                       GetProfit(prices, index+1, status, profit));
+        }
+            
+        return max(GetProfit(prices, index+1, false, profit),
+                   GetProfit(prices, index+1, true, profit-prices[index]));
     }
-    return profit;
-  }
+    int maxProfit(vector<int>& prices) {
+        return GetProfit(prices, 0, false, 0);
+    }
 };
 
 

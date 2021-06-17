@@ -21,6 +21,23 @@ class Solution {
 };
 
 
+ 
+class Solution1 {
+public:
+    int maxProfit(vector<int>& prices) {
+        int low = INT_MAX;
+        int result = 0;
+        for (int i = 0; i < prices.size(); i++) {
+            low = min(low, prices[i]); // 取最左最小价格
+            result = max(result, prices[i] - low); // 直接取最大区间利润 
+        }
+        return result;
+    }
+};
+
+
+
+
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);

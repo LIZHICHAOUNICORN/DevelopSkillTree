@@ -1,4 +1,4 @@
-CU_APPS=simpleDiveragence simpleDeviceQuery sumMatrix
+CU_APPS=simpleDiveragence simpleDeviceQuery sumMatrix reduceinteger
 
 all: ${CU_APPS}
 

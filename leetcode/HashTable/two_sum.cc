@@ -25,6 +25,26 @@ class Solution {
 };
 
 
+class Solution1 {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        std::unordered_map<int, int> container;
+        for(size_t i = 0; i < nums.size(); ++i) {
+            container[nums[i]] = i;
+        }
+        for (int i = 0; i < nums.size(); ++i) {
+            int other = target - nums[i];
+            if (container[other] && i != container[other]) {
+                return vector<int> ({i, container[other]});
+            }
+        }
+        return vector<int> ({0, 1});
+
+    }
+};
+
+
+
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);

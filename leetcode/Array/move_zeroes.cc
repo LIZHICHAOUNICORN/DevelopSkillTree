@@ -39,6 +39,24 @@ void move_zeroes(vector<int>& input_value) {
 }
 
 
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size(), left = 0, right = 0;
+        while (right < n) {
+            if (nums[right]) {
+                swap(nums[left], nums[right]);
+                left++;
+            }
+            right++;
+        }
+    }
+};
+
+
+
+
+
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);

@@ -10,6 +10,21 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+
+class Solution1{
+public:
+    bool hasCycle(ListNode *head) {
+        unordered_set<ListNode*> seen;
+        while (head != nullptr) {
+            if (seen.count(head)) {
+                return true;
+            }
+            seen.insert(head);
+            head = head->next;
+        }
+        return false;
+    }
+};
 class Solution {
  public:
   bool HasCycle(ListNode *head) {

@@ -8,3 +8,11 @@ x=x & (x−1)，该运算将 xx 的二进制表示的最后一个 11 变成 00
 
 正整数 yy 是 22 的整数次幂，当且仅当 y~\&~(y-1)=0y & (y−1)=0
 
+异或运算的规律：
+任何数和 00 做异或运算，结果仍然是原来的数，即 a \oplus 0=aa⊕0=a。
+
+任何数和其自身做异或运算，结果是 00，即 a \oplus a=0a⊕a=0。
+
+异或运算满足交换律和结合律，即 a \oplus b \oplus a=b \oplus a \oplus a=b \oplus (a \oplus a)=b \oplus0=ba⊕b⊕a=b⊕a⊕a=b⊕(a⊕a)=b⊕0=b。
+
+

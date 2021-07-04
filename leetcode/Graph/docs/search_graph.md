@@ -3,7 +3,7 @@
 ### 1. 广度优先搜索
 
 ```
-# recurrent pseudocode
+# pseudocode
 def bfs(graph, start, end):
     queue = []
     queue.append(start)
@@ -22,7 +22,7 @@ def bfs(graph, start, end):
 ### 2. 深度优先搜索
 
 ```
-# recurrent pseudocode
+# recursive pseudocode
 visited = set()
 def dfs(node, visited):
     visited.add(node)

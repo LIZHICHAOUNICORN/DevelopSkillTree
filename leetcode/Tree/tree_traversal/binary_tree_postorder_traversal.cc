@@ -39,29 +39,25 @@ public:
     }
 };
 
-
-class Solution2 {
- public:
-  vector<int> preorderTraversal(TreeNode* root) {
-  vector<int> ret;
-  if (root == nullptr) return ret;
-  stack<TreeNode*> reverse;
-  TreeNode* cur = root;
-  reverse.push(root);
-  while (!reverse.empty()){
-      cur = reverse.top();
-      reverse.pop();
-      ret.push_back(cur->val);
-      if (cur->right != nullptr) {
-          reverse.push(cur->right);
-      }
-      if (cur->left != nullptr) {
-          reverse.push(cur->left);
-      }
-  }
-  return ret;
-  }
+class Solution1 {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        if (root == nullptr) return ret;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty()) {
+            TreeNode* cur = st.top();
+            st.pop();
+            ret.push_back(cur->val);
+            if (cur->left) st.push(cur->left);
+            if (cur->right) st.push(cur->right);
+        }
+        std::reverse(ret.begin(), ret.end());
+        return ret;
+    }
 };
+
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

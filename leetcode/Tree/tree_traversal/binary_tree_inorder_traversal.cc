@@ -38,24 +38,24 @@ public:
 };
 
 // stack
-class Solution2 {
+class Solution1 {
  public:
   vector<int> inorderTraversal(TreeNode* root) {
-    vector<int> ret;
-    if (root == nullptr) return ret;
-    stack<TreeNode*> reverse;
-    TreeNode *cur = root;
-    while (cur != nullptr || !reverse.empty()){
-      while (cur != nullptr) {
-        reverse.push(cur);
-        cur = cur->left;
+      vector<int> ret;
+      if (root == nullptr) return ret;
+      TreeNode* cur = root;
+      stack<TreeNode*> reverse;
+      while(cur || !reverse.empty()) {
+          while (cur) {
+              reverse.push(cur);
+              cur = cur->left;
+          }
+          cur = reverse.top();
+          reverse.pop();
+          ret.push_back(cur->val);
+          cur = cur->right;
       }
-      cur = reverse.top();
-      reverse.pop();
-      ret.push_back(cur->val);
-      cur = cur->right;
-    }
-    return ret;
+      return ret;
   }
 };
 

@@ -41,28 +41,28 @@ public:
 };
 
 // stack
-class Solution2 {
- public:
-  vector<int> preorderTraversal(TreeNode* root) {
-  vector<int> ret;
-  if (root == nullptr) return ret;
-  stack<TreeNode*> reverse;
-  TreeNode* cur = root;
-  reverse.push(root);
-  while (!reverse.empty()){
-      cur = reverse.top();
-      reverse.pop();
-      ret.push_back(cur->val);
-      if (cur->right != nullptr) {
-          reverse.push(cur->right);
-      }
-      if (cur->left != nullptr) {
-          reverse.push(cur->left);
-      }
-  }
-  return ret;
-  }
+class Solution1 {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        stack<TreeNode*> reverse;
+        vector<int> ret;
+        if (root == nullptr) return ret;
+        reverse.push(root);
+        while(!reverse.empty()) {
+            TreeNode* node = reverse.top();
+            reverse.pop();
+            ret.push_back(node->val);
+			// Note: first right, then left.
+            // 为什么要先加入 右孩子，再加入左孩子呢? 
+            // 因为这样出栈的时候才是中左右的顺序。
+            if (node->right) reverse.push(node->right);
+            if (node->left) reverse.push(node->left);
+        }
+        return ret;
+    }
 };
+
+
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

@@ -8,32 +8,38 @@
 
 using namespace std;
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
- public:
-  vector<int> inorderTraversal(TreeNode* root) {
-    vector<int> ret;
-    if (root == nullptr) return ret;
-    helper(root, ret);
-    return ret;
-  }
- private:
-  void helper(TreeNode* root, vector<int>& node_value) {
-    // 终止条件
-    if (root == nullptr) return;
-    // 处理当前层逻辑
-    node_value.push_back(root->val);
-    // 进入下层
-    if (root->left != nullptr) {
-        helper(root->left, node_value);
+private:
+    void Traversal(TreeNode* node, vector<int>& value) {
+        if (node == nullptr) {
+            return;
+        }
+        Traversal(node->left, value);
+        Traversal(node->right, value);
+        value.push_back(node->val);
     }
-    if (root->right != nullptr) {
-        helper(root->right, node_value);
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        if (root == nullptr) return ret;
+        Traversal(root, ret);
+        return ret;
+
     }
-    // 处理本层的资源
-  }
 };
 
-// stack
+
 class Solution2 {
  public:
   vector<int> preorderTraversal(TreeNode* root) {

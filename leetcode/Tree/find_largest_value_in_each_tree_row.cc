@@ -8,38 +8,48 @@
 
 using namespace std;
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
 class Solution {
- public:
-  vector<int> largestValues(TreeNode* root) {
-    vector<int> ret;
-    if (root == nullptr) return ret;
-    vector<TreeNode*> cur;
-    vector<TreeNode*> next;
-    cur.push_back(root);
-    while (!cur.empty()) {
-      int max = cur[0]->val;
-      for (size_t i = 0; i < cur.size(); ++i) {
-        if (max < cur[i]->val) max = cur[i]->val;
-        if (cur[i]->left) {
-          next.push_back(cur[i]->left);
+public:
+    vector<int> largestValues(TreeNode* root) {
+        vector<int> ans;
+        if (root == nullptr) return ans;
+
+        queue<TreeNode*> Nodes;
+        Nodes.push(root);
+        while (!Nodes.empty()) {
+            int size = Nodes.size();
+            int max = INT_MIN;
+            for (int i = 0; i < size; ++i) {
+                TreeNode* node = Nodes.front();
+                Nodes.pop();
+                if (max < node->val) {
+                    max = node->val;
+                }
+                if (node->left) Nodes.push(node->left);
+                if (node->right) Nodes.push(node->right);
+            }
+            ans.push_back(max);
         }
-        if (cur[i]->right) {
-          next.push_back(cur[i]->right);
-        }
-      }
-      ret.push_back(max);
-      cur = next;
-      next.clear();
+        return ans;
     }
-    return ret;
-  }
 };
+
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  TreeNode* root = nullptr;
-  solu.largestValues(root);
   return 0;
 }

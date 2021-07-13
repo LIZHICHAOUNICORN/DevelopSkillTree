@@ -10,32 +10,30 @@ using namespace std;
 
 class Solution {
  public:
-  vector<vector<int>> levelOrder(TreeNode* root) {
-    vector<vector<int>> ret;
-    if (root == nullptr) return ret;
-    vector<TreeNode*> cur;
-    vector<TreeNode*> next;
-    cur.push_back(root);
-    while (!cur.empty()) {
-      vector<int> level;
-      for (auto it : cur) {
-        level.push_back(it->val);
-        if (it->left) next.push_back(it->left);
-        if (it->right) next.push_back(it->right);
-      }
-      ret.push_back(level);
-      cur = next;
-      next.clear();
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        if (root == nullptr) return ans;
+        queue<TreeNode*> cur;
+        cur.push(root);
+        while (!cur.empty()) {
+            vector<int> level_result;
+            int size = cur.size();
+            for (int i = 0; i < size; ++i) {
+                TreeNode* cur_node = cur.front();
+                cur.pop();
+                level_result.push_back(cur_node->val);
+                if (cur_node->left) cur.push(cur_node->left);
+                if (cur_node->right) cur.push(cur_node->right);
+            }
+            ans.push_back(level_result);
+        }
+        return ans;
     }
-    return ret;
-  }
 };
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  TreeNode* root = nullptr;
-  solu.levelOrder(root);
   return 0;
 }

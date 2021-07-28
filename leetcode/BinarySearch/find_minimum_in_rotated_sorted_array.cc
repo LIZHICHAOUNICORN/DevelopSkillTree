@@ -9,30 +9,24 @@ using std::vector;
 using std::min;
 
 class Solution {
- public:
-  int findMin(vector<int>& nums) {
-
-    assert(nums.size() > 0);
-    if(nums.size() == 1)
-        return nums[0];
-    if(nums.size() == 2)
-        return min(nums[0], nums[1]);
-
-    int l = 0, r = nums.size() - 1;
-    while(l < r) {
-        int mid = l + (r - l) / 2;
-        if(nums[l] <= nums[mid] && nums[mid] <= nums[r])
-            return nums[l];
-
-        if(nums[l] > nums[mid])
-            l = l + 1, r = mid;
-        else if(nums[r] < nums[mid])
-            l = mid + 1;
-        else
-            assert(false);
+public:
+    int findMin(vector<int>& nums) {
+        int left = 0;
+        int right = nums.size() - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < nums[right]) {
+                right = mid;
+            }
+            else if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            }
+            else {
+                right -= 1;
+            }
+        }
+        return nums[left];
     }
-    return nums[l];
-  }
 };
 
 int main(int argc, char* argv[]) {

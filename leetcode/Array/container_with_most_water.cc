@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include <random>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/glog/include/logging.h"
+#include "third_party/gflags/include/gflags.h"
 
 DEFINE_int32(input_size, 10, "input data size");
 

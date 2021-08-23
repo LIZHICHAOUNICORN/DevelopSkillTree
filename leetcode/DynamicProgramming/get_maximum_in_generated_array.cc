@@ -8,6 +8,8 @@
 using std::vector;
 using std::min;
 
+// Problem: https://leetcode-cn.com/problems/get-maximum-in-generated-array
+
 class Solution {
  public:
   int getMaximumGenerated(int n) {

@@ -6,9 +6,9 @@
 #include "third_party/glog/include/logging.h"
 #include "third_party/gflags/include/gflags.h"
 
-DEFINE_int32(input_size, 10, "input data size");
-
 using namespace std;
+
+// Problem: https://leetcode-cn.com/problems/cheapest-flights-within-k-stops
 
 // dfs + cache
 class Solution {
@@ -36,6 +36,7 @@ class Solution {
    }
 };
 
+// DP
 class Solution1 {
  private:
   int INF = 100007;

@@ -13,23 +13,25 @@ cc_binary(
 )
 
 cc_binary(
-    name = "move_zeroes",
-    srcs = ["move_zeroes.cc"],
-    malloc = "@com_google_tcmalloc//tcmalloc",
+    name = "running_sum_of_1d_array",
+    srcs = ["running_sum_of_1d_array.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
         '//third_party/gflags:gflags',
     ],
-    linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
 cc_binary(
-    name = "contains_duplicate",
-    srcs = ["contains_duplicate.cc"],
-    malloc = "@com_google_tcmalloc//tcmalloc",
+    name = "sum_of_all_odd_length_subarrays",
+    srcs = ["sum_of_all_odd_length_subarrays.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
         '//third_party/gflags:gflags',
     ],
-    linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )

@@ -47,3 +47,27 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
+
+cc_binary(
+    name = "valid_perfect_square",
+    srcs = ["valid_perfect_square.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "peak_index_in_amountain_array",
+    srcs = ["peak_index_in_amountain_array.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)

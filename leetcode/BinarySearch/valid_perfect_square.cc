@@ -1,35 +1,33 @@
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include <vector>
+#include <climits>
 
-DEFINE_int32(input, 8, "The test case");
+#include "third_party/glog/include/logging.h"
+#include "third_party/gflags/include/gflags.h"
+
+using std::vector;
 
 class Solution {
- public:
-  bool isPerfectSquare(int num) {
-    int value = mySqrt(num);
-    return value * value == num;
-  }
- private:
-  int mySqrt(int x) {
-    if (x <= 1) return x;
-    int left = 1, right = x;
-    long long mid = left + (right - left) / 2;
-    while (left < right) {
-      if (mid * mid > x) right = mid - 1;
-      else if (mid * mid < x) left = mid + 1;
-      else return mid;
-      mid = left + (right - left) / 2;
+public:
+    bool isPerfectSquare(int num) {
+        if(num == INT_MAX) return false;
+        int left = 1;
+        int right = num;
+        while(left<=right) {
+            int mid = left+(right-left)/2;
+            int tmp = std::min(mid, INT_MAX/mid)*mid;
+            if(tmp == num)return true;
+            else if(tmp < num) left=mid+1;
+            else if(tmp > num) right=mid-1;
+        }
+        return false;
     }
-    long long aa = (long long) left * left;
-    return aa > x ? left - 1 : left;
-  }
 };
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  int ret = solu.isPerfectSquare(FLAGS_input);
-  LOG(INFO) << ret;
+  bool ret = solu.isPerfectSquare(10);
+  LOG(INFO) << "ret: " << ret;
   return 0;
 }

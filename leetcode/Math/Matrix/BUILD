@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "two_sum_ii_input_array_is_sorted",
-    srcs = ["two_sum_ii_input_array_is_sorted.cc"],
+    name = "rotate_image",
+    srcs = ["rotate_image.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -13,8 +13,20 @@ cc_binary(
 )
 
 cc_binary(
-    name = "intersection_of_two_arrays",
-    srcs = ["intersection_of_two_arrays.cc"],
+    name = "island_perimeter",
+    srcs = ["island_perimeter.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "reshape_the_matrix",
+    srcs = ["reshape_the_matrix.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

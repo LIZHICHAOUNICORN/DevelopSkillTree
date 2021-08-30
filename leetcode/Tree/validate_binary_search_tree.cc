@@ -1,46 +1,50 @@
 #include <vector>
-#include <stack>
+#include <cstdlib>
+#include <random>
 
-#include <limits.h>
-
-#include "./tree_node.h"
-
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "leetcode/Tree/tree_node.h"
+#include "third_party/glog/include/logging.h"
+#include "third_party/gflags/include/gflags.h"
 
 using namespace std;
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
- public:
-  bool isValidBST(TreeNode* root) {
-    return inorderTraversal(root);
-  }
- private:
-  bool inorderTraversal(TreeNode* root) {
-    if (root == nullptr) return true;
-    stack<TreeNode*> reverse;
-    TreeNode *cur = root;
-    int last_value = INT_MIN;
-    bool last_value_init = false;
-    while (cur != nullptr || !reverse.empty()){
-      while (cur != nullptr) {
-        reverse.push(cur);
-        cur = cur->left;
-      }
-      cur = reverse.top();
-      reverse.pop();
-      if (cur->val <= last_value && last_value_init) return false;
-      last_value = cur->val;
-      if (!last_value_init) last_value_init = true;
-      cur = cur->right;
+private:
+    void inorder(TreeNode* node, vector<int>& value) {
+        if (node == nullptr) return;
+        inorder(node->left, value);
+        value.push_back(node->val);
+        inorder(node->right, value);
     }
-    return true;
-  }
+public:
+    bool isValidBST(TreeNode* root) {
+        if (root == nullptr) return false;
+        vector<int> value;
+        inorder(root, value);
+        for (int i = 1; i < value.size(); ++i) {
+            if (value[i] <= value[i-1]) return false;
+        }
+        return true;
+
+    }
 };
+
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
+
   Solution solu;
   return 0;
 }

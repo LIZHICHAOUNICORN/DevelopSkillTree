@@ -23,3 +23,39 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
+
+cc_binary(
+    name = "lian_biao_zhong_dao_shu_di_kge_jie_dian_lcof",
+    srcs = ["lian_biao_zhong_dao_shu_di_kge_jie_dian_lcof.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "sort_colors",
+    srcs = ["sort_colors.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "compare_version_numbers",
+    srcs = ["compare_version_numbers.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)

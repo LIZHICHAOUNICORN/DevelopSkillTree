@@ -11,6 +11,8 @@
 
 using namespace std;
 
+// Problem: https://leetcode-cn.com/problems/design-twitter/
+
 class Twitter {
 private:
     struct User {

@@ -1,7 +1,7 @@
 #include "third_party/glog/include/logging.h"
 #include "third_party/gflags/include/gflags.h"
 
-// Problems: https://leetcode-cn.com/problems/insertion-sort-list/
+// Problems: https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
 using namespace std;
 

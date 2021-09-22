@@ -96,8 +96,19 @@ cc_binary(
 )
 
 cc_binary(
-    name = "short_encoding_of_words",
-    srcs = ["short_encoding_of_words.cc"],
+    name = "search_suggestions_system",
+    srcs = ["search_suggestions_system.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+cc_binary(
+    name = "remove_sub_folders_from_the_filesystem",
+    srcs = ["remove_sub_folders_from_the_filesystem.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

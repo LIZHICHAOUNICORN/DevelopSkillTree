@@ -1,23 +1,22 @@
-#include <vector>
-
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
 
 using namespace std;
-// Problem: https://leetcode-cn.com/problems/2-keys-keyboard
+
+// Problem: https://leetcode-cn.com/problems/power-of-three/
 
 class Solution {
  public:
-  int minSteps(int n) {
-    int ret = 0;
-    for (int i = 2; i * i < n; ++i) {
-      while (n % i == 0) {
-        n /= i;
-        ret += i;
-      }
+  bool isPowerOfThree(int n) { return n > 0 && 1162261467 % n == 0; }
+};
+
+class Solution1 {
+ public:
+  bool isPowerOfThree(int n) {
+    while (n && n % 3 == 0) {
+      n /= 3;
     }
-    if (n > 1) ret += n;
-    return ret;
+    return n == 1;
   }
 };
 
@@ -27,7 +26,7 @@ int main(int argc, char* argv[]) {
 
   Solution solu;
   for (int i = 3; i < 1000; ++i) {
-    int ret = solu.minSteps(i);
+    int ret = solu.isPowerOfThree(i);
     LOG(INFO) << "ret: " << ret;
   }
   return 0;

@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -36,6 +36,7 @@ class Solution1 {
     SubsetsHelper(nums, 0, sub, subs);
     return subs;
   }
+
  private:
   void SubsetsHelper(const vector<int>& nums, int i, vector<int>& sub,
                      vector<vector<int>>& subs) {

@@ -1,23 +1,21 @@
 // Author: zhichaoli
 // Time: 2020年05月23日
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
 class Solution {
-public:
-    int hammingWeight(uint32_t n) {
-        int ret = 0;
-        for (int i = 0; i < 32; ++i) {
-            ret += (n >> i & 1);
-        }
-        return ret;
-        
+ public:
+  int hammingWeight(uint32_t n) {
+    int ret = 0;
+    for (int i = 0; i < 32; ++i) {
+      ret += (n >> i & 1);
     }
+    return ret;
+  }
 };
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

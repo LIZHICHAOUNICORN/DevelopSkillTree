@@ -1,9 +1,9 @@
-#include <vector>
 #include <limits.h>
 #include <algorithm>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::min;
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
+  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
   int ret = solu.maxProduct(nums);
   LOG(INFO) << ret;
   return 0;

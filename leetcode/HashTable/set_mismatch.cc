@@ -1,8 +1,8 @@
-#include <numeric>
 #include <algorithm>
+#include <numeric>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ class Solution {
     vector<int> ret;
     ret.push_back(*d);
     // missing value: sum n*(n+1)/2 - s + *d
-    ret.push_back(nums.size() *(nums.size()+1)/2-s+*d);
+    ret.push_back(nums.size() * (nums.size() + 1) / 2 - s + *d);
     return ret;
   }
 };

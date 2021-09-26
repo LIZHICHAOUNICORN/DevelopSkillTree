@@ -1,8 +1,8 @@
-#include <vector>
 #include <algorithm>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::sort;
@@ -10,12 +10,12 @@ using std::sort;
 class Solution {
  public:
   int findContentChildren(vector<int>& g, vector<int>& s) {
-    if (s.empty()|| g.empty()) return 0;
+    if (s.empty() || g.empty()) return 0;
 
     sort(g.begin(), g.end());
     sort(s.begin(), s.end());
 
-    int  max_value = 0;
+    int max_value = 0;
     size_t s_start = 0;
 
     for (int kid : g) {
@@ -33,25 +33,23 @@ class Solution {
   }
 };
 
-
 class Solution1 {
  public:
   int findContentChildren(vector<int>& g, vector<int>& s) {
-    if (s.empty()|| g.empty()) return 0;
+    if (s.empty() || g.empty()) return 0;
 
     sort(g.begin(), g.end());
     sort(s.begin(), s.end());
 
     int gi = 0, si = 0;
     int max_value = 0;
-    while(gi < g.size() && si < s.size()){
-      if(s[si] >= g[gi]){
-        max_value ++;
-        si ++;
-        gi ++;
-      }
-      else {
-        si ++;
+    while (gi < g.size() && si < s.size()) {
+      if (s[si] >= g[gi]) {
+        max_value++;
+        si++;
+        gi++;
+      } else {
+        si++;
       }
     }
 
@@ -60,21 +58,20 @@ class Solution1 {
 };
 
 class Solution3 {
-public:
-    int findContentChildren(vector<int>& g, vector<int>& s) {
-        sort(g.begin(), g.end());
-        sort(s.begin(), s.end());
-        int index = s.size() - 1;
-        int result = 0;
-        for (int i = g.size()-1; i >= 0; --i) {
-            if (index >= 0 && s[index] >= g[i]) {
-                result += 1;
-                index--;
-            }
-        }
-        return result;
-
+ public:
+  int findContentChildren(vector<int>& g, vector<int>& s) {
+    sort(g.begin(), g.end());
+    sort(s.begin(), s.end());
+    int index = s.size() - 1;
+    int result = 0;
+    for (int i = g.size() - 1; i >= 0; --i) {
+      if (index >= 0 && s[index] >= g[i]) {
+        result += 1;
+        index--;
+      }
     }
+    return result;
+  }
 };
 
 int main(int argc, char* argv[]) {

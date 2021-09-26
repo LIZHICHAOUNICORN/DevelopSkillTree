@@ -1,17 +1,16 @@
-#include <vector>
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <string>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::string;
 using std::cout;
 using std::endl;
 using std::max;
-
 
 void Print2DVector(vector<vector<long>>& two_d_vector) {
   for (vector<long> vecs : two_d_vector) {
@@ -27,21 +26,21 @@ class Solution {
  public:
   int dfs(const string& s1, const string& s2, int i, int j,
           vector<vector<int>>& dp) {
-      if (i == 0 || j == 0) return 0; // 决策边界
+    if (i == 0 || j == 0) return 0;  // 决策边界
 
-      if (dp[i][j] != -1) return dp[i][j];  // 记忆化
+    if (dp[i][j] != -1) return dp[i][j];  // 记忆化
 
-      // 状态转移
-      dp[i][j] = max(dfs(s1, s2, i - 1, j, dp), dfs(s1, s2, i, j - 1, dp));
-      if (s1[i-1] == s2[j-1])
-          dp[i][j] = max(dp[i][j], dfs(s1, s2, i - 1, j - 1, dp) + 1);
+    // 状态转移
+    dp[i][j] = max(dfs(s1, s2, i - 1, j, dp), dfs(s1, s2, i, j - 1, dp));
+    if (s1[i - 1] == s2[j - 1])
+      dp[i][j] = max(dp[i][j], dfs(s1, s2, i - 1, j - 1, dp) + 1);
 
-      return dp[i][j];
+    return dp[i][j];
   }
 
   int longestCommonSubsequence(string text1, string text2) {
-      vector<vector<int>> dp(text1.size(), vector<int>(text2.size(), -1));
-      return dfs(text1, text2, text1.size()-1, text2.size()-1, dp);
+    vector<vector<int>> dp(text1.size(), vector<int>(text2.size(), -1));
+    return dfs(text1, text2, text1.size() - 1, text2.size() - 1, dp);
   }
 };
 
@@ -51,14 +50,13 @@ class Solution1 {
   vector<vector<int>> dp;
 
   int dfs(int i, int j) {
-    if (i == 0 || j == 0) return 0; // 决策边界
+    if (i == 0 || j == 0) return 0;  // 决策边界
 
     if (dp[i][j] != -1) return dp[i][j];  // 记忆化
 
     // 状态转移
     dp[i][j] = max(dfs(i - 1, j), dfs(i, j - 1));
-    if (s1[i-1] == s2[j-1])
-        dp[i][j] = max(dp[i][j], dfs(i - 1, j - 1) + 1);
+    if (s1[i - 1] == s2[j - 1]) dp[i][j] = max(dp[i][j], dfs(i - 1, j - 1) + 1);
 
     return dp[i][j];
   }

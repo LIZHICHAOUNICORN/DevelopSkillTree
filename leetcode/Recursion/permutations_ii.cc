@@ -1,39 +1,39 @@
 // Author: zhichaoli
 // Time: 2020年02月12日
 
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <string>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
 #include <gperftools/profiler.h>
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::string;
 
 class Solution {
  public:
-  void recursion(vector<int> num, int i, int j, vector<vector<int> > &res) {
-    if (i == j-1) {
+  void recursion(vector<int> num, int i, int j, vector<vector<int>> &res) {
+    if (i == j - 1) {
       res.push_back(num);
       return;
     }
     for (int k = i; k < j; k++) {
       if (i != k && num[i] == num[k]) continue;
       std::swap(num[i], num[k]);
-      recursion(num, i+1, j, res);
+      recursion(num, i + 1, j, res);
     }
   }
-  vector<vector<int> > permuteUnique(vector<int> &num) {
+  vector<vector<int>> permuteUnique(vector<int> &num) {
     sort(num.begin(), num.end());
-    vector<vector<int> >res;
+    vector<vector<int>> res;
     recursion(num, 0, num.size(), res);
     return res;
   }
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;

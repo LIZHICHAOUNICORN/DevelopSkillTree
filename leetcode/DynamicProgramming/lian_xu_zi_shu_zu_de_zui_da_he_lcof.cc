@@ -1,23 +1,22 @@
-#include <vector>
 #include <limits.h>
 #include <algorithm>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::max;
 
 // recursive
-// dp[n] = dp[n-1] + nums[n], nums[n]) 
-class Solution
-{
+// dp[n] = dp[n-1] + nums[n], nums[n])
+class Solution {
  public:
-  int maxSubArray(vector<int> &nums) {
+  int maxSubArray(vector<int>& nums) {
     //类似寻找最大最小值的题目，初始值一定要定义成理论上的最小最大值
     int result = INT_MIN;
     int numsSize = int(nums.size());
-    //dp[i]表示nums中以nums[i]结尾的最大子序和
+    // dp[i]表示nums中以nums[i]结尾的最大子序和
     vector<int> dp(numsSize);
     dp[0] = nums[0];
     result = dp[0];
@@ -29,12 +28,11 @@ class Solution
   }
 };
 
-
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
+  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
   int ret = solu.maxSubArray(nums);
   LOG(INFO) << ret;
   return 0;

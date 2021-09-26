@@ -1,8 +1,8 @@
 // Author: zhichaoli
 // Time: 2020年05月16日
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ class Solution {
   int hammingWeight(uint32_t n) {
     int count = 0;
     size_t total = 32;
-    while(total-- > 0) {
+    while (total-- > 0) {
       if (n & 1) ++count;
       n >>= 1;
     }

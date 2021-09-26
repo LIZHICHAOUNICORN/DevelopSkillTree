@@ -5,8 +5,8 @@
 #include <stack>
 
 #include "../Tree/tree_node.h"
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::set;
 using std::stack;
@@ -14,7 +14,7 @@ using std::stack;
 // Recursion
 void dfs(TreeNode* node_ptr, set<TreeNode*>& visited) {
   if (visited.find(node_ptr) != visited.end()) {
-    return;  
+    return;
   }
   visited.insert(node_ptr);
   // iterator node chidrens
@@ -35,7 +35,6 @@ void dfs_loop(TreeNode* root) {
     // stack.push(new_nodes);
   }
 }
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

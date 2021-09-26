@@ -1,9 +1,9 @@
-#include <vector>
 #include <cstdlib>
 #include <random>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 #include <gperftools/profiler.h>
 
@@ -23,7 +23,7 @@ int find_non_zero(vector<int>& input_value, int start) {
 
 void move_zeroes(vector<int>& input_value) {
   bool stop = false;
-  while(!stop) {
+  while (!stop) {
     for (size_t i = 0; i < input_value.size(); ++i) {
       if (input_value[i] == 0) {
         int pos = find_non_zero(input_value, i);
@@ -35,27 +35,22 @@ void move_zeroes(vector<int>& input_value) {
         input_value[pos] = 0;
       }
     }
-  } 
+  }
 }
 
-
 class Solution {
-public:
-    void moveZeroes(vector<int>& nums) {
-        int n = nums.size(), left = 0, right = 0;
-        while (right < n) {
-            if (nums[right]) {
-                swap(nums[left], nums[right]);
-                left++;
-            }
-            right++;
-        }
+ public:
+  void moveZeroes(vector<int>& nums) {
+    int n = nums.size(), left = 0, right = 0;
+    while (right < n) {
+      if (nums[right]) {
+        swap(nums[left], nums[right]);
+        left++;
+      }
+      right++;
     }
+  }
 };
-
-
-
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
@@ -64,7 +59,7 @@ int main(int argc, char* argv[]) {
   for (int i = 0; i < FLAGS_epolls; ++i) {
     random_device rd;
     int data[] = {0, 1, 0, 3, 12};
-    vector<int> input_value(data, data + sizeof(data)/sizeof(int));
+    vector<int> input_value(data, data + sizeof(data) / sizeof(int));
     move_zeroes(input_value);
     for (auto it : input_value) {
       LOG(INFO) << it;

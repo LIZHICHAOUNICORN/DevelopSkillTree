@@ -1,5 +1,5 @@
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 #include "create_linked_list.h"
 
@@ -8,19 +8,19 @@ using namespace std;
 class Solution {
  public:
   ListNode* removeElements(ListNode* head, int val) {
-    if (head == nullptr){
+    if (head == nullptr) {
       return head;
     }
-    ListNode* p=head;
-    while (p->next != nullptr ){
-      if (p->next->val == val){
+    ListNode* p = head;
+    while (p->next != nullptr) {
+      if (p->next->val == val) {
         p->next = p->next->next;
       } else {
-        p=p->next;
+        p = p->next;
       }
     }
-    if (head->val==val) {
-      head=head->next;
+    if (head->val == val) {
+      head = head->next;
     }
     return head;
   }

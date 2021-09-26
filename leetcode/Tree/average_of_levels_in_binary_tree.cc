@@ -1,10 +1,10 @@
-#include <vector>
 #include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -16,30 +16,31 @@ using namespace std;
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
  * };
  */
 class Solution {
-public:
-    vector<double> averageOfLevels(TreeNode* root) {
-        vector<double> ret;
-        if (root == nullptr) return ret;
-        queue<TreeNode*> Nodes;
-        Nodes.push(root);
-        while (!Nodes.empty()) {
-            int size = Nodes.size();
-            double avg = 0;
-            for (int i = 0; i < size; ++i) {
-                TreeNode* node = Nodes.front();
-                Nodes.pop();
-                avg += node->val;
-                if (node->left) Nodes.push(node->left);
-                if (node->right) Nodes.push(node->right);
-            }
-            ret.push_back(avg/size);
-        }
-        return ret;
+ public:
+  vector<double> averageOfLevels(TreeNode* root) {
+    vector<double> ret;
+    if (root == nullptr) return ret;
+    queue<TreeNode*> Nodes;
+    Nodes.push(root);
+    while (!Nodes.empty()) {
+      int size = Nodes.size();
+      double avg = 0;
+      for (int i = 0; i < size; ++i) {
+        TreeNode* node = Nodes.front();
+        Nodes.pop();
+        avg += node->val;
+        if (node->left) Nodes.push(node->left);
+        if (node->right) Nodes.push(node->right);
+      }
+      ret.push_back(avg / size);
     }
+    return ret;
+  }
 };
 
 int main(int argc, char* argv[]) {

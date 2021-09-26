@@ -1,14 +1,14 @@
 #include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
 class Solution {
  public:
   void rotate(vector<int>& nums, int k) {
-    if(nums.empty()) return;
+    if (nums.empty()) return;
     k = k % nums.size();
     int count = 0;
     for (int start = 0; count < nums.size(); ++start) {
@@ -29,8 +29,9 @@ class Solution {
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
-  int array_value[] = {1,2,3,4,5,6};
-  vector<int> input_value(array_value, array_value + sizeof(array_value)/sizeof(int));
+  int array_value[] = {1, 2, 3, 4, 5, 6};
+  vector<int> input_value(array_value,
+                          array_value + sizeof(array_value) / sizeof(int));
   Solution solu;
   solu.rotate(input_value, 2);
   for (size_t i = 0; i < input_value.size(); ++i) {

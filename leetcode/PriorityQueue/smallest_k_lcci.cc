@@ -1,11 +1,11 @@
-#include <vector>
 #include <algorithm>
 #include <iostream>
-#include <string>
 #include <queue>
+#include <string>
+#include <vector>
 
-#include "third_party/glog/include/logging.h"
 #include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -24,31 +24,29 @@ class Solution {
 };
 
 class Solution1 {
-public:
-    vector<int> smallestK(vector<int>& arr, int k) {
-        vector<int> vec(k, 0);
-        if (k == 0) { // 排除 0 的情况
-            return vec;
-        }
-        priority_queue<int> Q;
-        for (int i = 0; i < k; ++i) {
-            Q.push(arr[i]);
-        }
-        for (int i = k; i < (int)arr.size(); ++i) {
-            if (Q.top() > arr[i]) {
-                Q.pop();
-                Q.push(arr[i]);
-            }
-        }
-        for (int i = 0; i < k; ++i) {
-            vec[i] = Q.top();
-            Q.pop();
-        }
-        return vec;
+ public:
+  vector<int> smallestK(vector<int>& arr, int k) {
+    vector<int> vec(k, 0);
+    if (k == 0) {  // 排除 0 的情况
+      return vec;
     }
+    priority_queue<int> Q;
+    for (int i = 0; i < k; ++i) {
+      Q.push(arr[i]);
+    }
+    for (int i = k; i < (int)arr.size(); ++i) {
+      if (Q.top() > arr[i]) {
+        Q.pop();
+        Q.push(arr[i]);
+      }
+    }
+    for (int i = 0; i < k; ++i) {
+      vec[i] = Q.top();
+      Q.pop();
+    }
+    return vec;
+  }
 };
-
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

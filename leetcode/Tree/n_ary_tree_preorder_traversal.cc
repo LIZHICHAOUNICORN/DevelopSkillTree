@@ -1,11 +1,11 @@
-#include <vector>
-#include <stack>
 #include <algorithm>
+#include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -17,6 +17,7 @@ class Solution {
     helper(root, ret);
     return ret;
   }
+
  private:
   void helper(Node* cur, vector<int>& ret) {
     if (cur == nullptr) return;
@@ -27,7 +28,6 @@ class Solution {
     }
   }
 };
-
 
 class Solution1 {
  public:
@@ -56,10 +56,9 @@ class Solution1 {
   }
 };
 
-
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
-  
+
   return 0;
 }

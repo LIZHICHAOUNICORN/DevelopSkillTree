@@ -1,9 +1,9 @@
-#include <vector>
 #include <cstdlib>
 #include <random>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_size, 10, "input data size");
 

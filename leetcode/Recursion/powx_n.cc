@@ -1,11 +1,11 @@
 // Author: zhichaoli
 // Time: 2020年02月12日
 
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 class Solution {
@@ -17,7 +17,7 @@ class Solution {
     bool neg = n < 0;
     if (neg) N = -N;
     ret = Pow(x, N);
-    return neg ? 1/ret: ret;
+    return neg ? 1 / ret : ret;
   }
   // log(n)
   double Pow(double x, long long n) {
@@ -26,14 +26,13 @@ class Solution {
     if (n % 2 == 0) {
       n = n / 2;
     } else {
-      n = (n - 1)/2;
+      n = (n - 1) / 2;
       value = x;
     }
     double half = Pow(x, n);
     return value * half * half;
   }
 };
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

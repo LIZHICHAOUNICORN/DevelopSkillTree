@@ -1,23 +1,23 @@
-#include <vector>
-#include <unordered_map>
 #include <algorithm>
 #include <random>
+#include <unordered_map>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_size, 0, "input data size");
 using namespace std;
 
 class Solution {
-public:
+ public:
   vector<vector<int>> threeSum(vector<int>& nums) {
-    vector<vector<int> > res;
-    if(nums.size() < 3) return res;
+    vector<vector<int>> res;
+    if (nums.size() < 3) return res;
     std::sort(nums.begin(), nums.end());
     if (nums[0] > 0) return res;
     for (size_t i = 0; i < nums.size(); ++i) {
-      if (i > 0 && nums[i] == nums[i-1]) continue;
+      if (i > 0 && nums[i] == nums[i - 1]) continue;
       size_t head = i + 1;
       size_t tail = nums.size() - 1;
       while (head < tail) {
@@ -27,22 +27,22 @@ public:
           item.push_back(nums[head]);
           item.push_back(nums[tail]);
           res.push_back(item);
-          while (head < tail && nums[head] == nums[head+1]) {
+          while (head < tail && nums[head] == nums[head + 1]) {
             head = head + 1;
           }
-          while (head < tail && nums[tail] == nums[tail-1]) {
+          while (head < tail && nums[tail] == nums[tail - 1]) {
             tail = tail - 1;
           }
           head += 1;
           tail -= 1;
         } else if (nums[i] + nums[head] + nums[tail] > 0) {
-            tail -= 1;
+          tail -= 1;
         } else {
-            head += 1;
-        }   
+          head += 1;
+        }
       }
     }
-      return res;
+    return res;
   }
 };
 
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   int data[] = {-1, 0, 1, 2, -1, -4};
   Solution solu;
-  vector<int> input(data, data + sizeof(data)/sizeof(int));
+  vector<int> input(data, data + sizeof(data) / sizeof(int));
   vector<vector<int>> ret = solu.threeSum(input);
   // vector<vector<int>> ret = three_sum(input, FLAGS_input_size);
   for (auto it : ret) {

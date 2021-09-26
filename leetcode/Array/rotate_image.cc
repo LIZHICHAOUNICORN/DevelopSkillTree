@@ -1,10 +1,10 @@
-#include <vector>
+#include <algorithm>
 #include <cstdlib>
 #include <random>
-#include <algorithm>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 #include <gperftools/profiler.h>
 
@@ -18,16 +18,16 @@ class Solution {
  public:
   void rotate(vector<vector<int>>& matrix) {
     int n = matrix.size();
-    
-    for(int i=0; i<n; i++) {
-        for(int j=i; j<n; j++) {
-            int temp = matrix[i][j];
-            matrix[i][j] = matrix[j][i];
-            matrix[j][i] = temp;
-        }
+
+    for (int i = 0; i < n; i++) {
+      for (int j = i; j < n; j++) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[j][i];
+        matrix[j][i] = temp;
+      }
     }
-    
-    for(int i=0; i<n; i++) {
+
+    for (int i = 0; i < n; i++) {
       std::reverse(matrix[i].begin(), matrix[i].end());
     }
   }

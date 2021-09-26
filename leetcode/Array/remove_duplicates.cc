@@ -1,9 +1,9 @@
-#include <vector>
-#include <unordered_map>
 #include <random>
+#include <unordered_map>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_size, 0, "input data size");
 
@@ -17,7 +17,7 @@ int remove_duplicates(vector<int>& sorted) {
   for (size_t i = 1, w_p = 1; i < sorted.size();) {
     // 找到第一个不是的位置
     int last_i = i;
-    while(dup_value == sorted[i]) {
+    while (dup_value == sorted[i]) {
       ++i;
       if (i == sorted.size()) {
         break;
@@ -40,12 +40,11 @@ int remove_duplicates(vector<int>& sorted) {
   return length;
 }
 
-
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
-  int data[] = {0,0,1,1,1,2,2,3,3,4};
-  vector<int> sorted(data, data + sizeof(data)/sizeof(int));
+  int data[] = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+  vector<int> sorted(data, data + sizeof(data) / sizeof(int));
   int ret = remove_duplicates(sorted);
   for (size_t i = 0; i < sorted.size(); ++i) {
     LOG(INFO) << sorted[i];

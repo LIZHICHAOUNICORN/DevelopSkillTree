@@ -1,11 +1,11 @@
-#include <vector>
-#include <queue>
-#include <cstdlib>
-#include <random>
 #include <algorithm>
+#include <cstdlib>
+#include <queue>
+#include <random>
+#include <vector>
 
-#include "third_party/glog/include/logging.h"
 #include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_size, 10, "input data size");
 
@@ -19,7 +19,7 @@ class Solution {
 
   vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
     stk.push_back(0);
-    dfs(graph, 0, graph.size()-1);
+    dfs(graph, 0, graph.size() - 1);
     return ans;
   }
   void dfs(vector<vector<int>>& graph, int src, int dst) {
@@ -37,43 +37,41 @@ class Solution {
 
 class Solution1 {
  public:
-    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        queue<vector<int>> que;
-        que.push({0});
+  vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+    queue<vector<int>> que;
+    que.push({0});
 
-        while (!que.empty()) {
-            auto path = que.front();
-            que.pop();
+    while (!que.empty()) {
+      auto path = que.front();
+      que.pop();
 
-            auto cur = path.back();
-            for (auto& next : graph[cur]) {
-                path.push_back(next);
+      auto cur = path.back();
+      for (auto& next : graph[cur]) {
+        path.push_back(next);
 
-                if (next == (int)graph.size() - 1) {
-                    ans.push_back(path);
-                }
-                else {
-                    que.push(path);
-                }
-
-                path.pop_back();
-            }
+        if (next == (int)graph.size() - 1) {
+          ans.push_back(path);
+        } else {
+          que.push(path);
         }
 
-        return ans;
+        path.pop_back();
+      }
     }
 
- private:
-    vector<vector<int>> ans;
-};
+    return ans;
+  }
 
+ private:
+  vector<vector<int>> ans;
+};
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   // Build test case.
   vector<vector<int>> flights;
-  vector<int> flight1({1,2});
+  vector<int> flight1({1, 2});
   vector<int> flight2({3});
   vector<int> flight3({3});
   vector<int> flight4({});

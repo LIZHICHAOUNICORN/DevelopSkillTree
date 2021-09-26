@@ -1,5 +1,5 @@
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(reverse_input_size, 0, "input data size");
 
@@ -8,14 +8,14 @@ using namespace std;
 // Definition for singly-linked list.
 struct ListNode {
   int val;
-  ListNode *next;
+  ListNode* next;
   ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution {
  public:
   ListNode* reverseList(ListNode* head) {
-    if(head == nullptr) return head;
+    if (head == nullptr) return head;
     ListNode* cur = head;
     ListNode* temp = nullptr;
     ListNode* pre = nullptr;

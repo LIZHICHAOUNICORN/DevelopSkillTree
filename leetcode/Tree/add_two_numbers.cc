@@ -1,21 +1,20 @@
-#include <vector>
 #include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
 struct ListNode {
-   int val;
-   ListNode *next;
-   ListNode() : val(0), next(nullptr) {}
-   ListNode(int x) : val(x), next(nullptr) {}
-   ListNode(int x, ListNode *next) : val(x), next(next) {}
+  int val;
+  ListNode* next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
-
 
 class Solution {
  public:
@@ -24,15 +23,16 @@ class Solution {
     ListNode* cur = head;
     int plus = 0;
     while (l1 || l2) {
-        int num = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + plus;
-        if (num >= 10) {
-            num -= 10;
-            plus = 1;
-        } else plus = 0;
-        cur->next = new ListNode(num);
-        cur = cur->next;
-        if (l1) l1 = l1->next;
-        if (l2) l2 = l2->next;
+      int num = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + plus;
+      if (num >= 10) {
+        num -= 10;
+        plus = 1;
+      } else
+        plus = 0;
+      cur->next = new ListNode(num);
+      cur = cur->next;
+      if (l1) l1 = l1->next;
+      if (l2) l2 = l2->next;
     }
     if (plus) cur->next = new ListNode(1);
     return head->next;
@@ -42,6 +42,6 @@ class Solution {
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
-  
+
   return 0;
 }

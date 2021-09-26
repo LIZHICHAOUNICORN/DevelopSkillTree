@@ -1,13 +1,13 @@
 // Author: zhichaoli
 // Time: 2020年02月12日
 
+#include <queue>
 #include <set>
 #include <stack>
-#include <queue>
 
 #include "../Tree/tree_node.h"
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::set;
 using std::queue;

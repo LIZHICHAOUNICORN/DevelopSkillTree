@@ -1,13 +1,13 @@
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
 // Definition for singly-linked list.
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+  int val;
+  ListNode *next;
+  ListNode(int x) : val(x), next(NULL) {}
 };
 
 // don't upderstand
@@ -31,17 +31,17 @@ class Solution {
 
 class Solution2 {
  public:
-  ListNode* swapPairs(ListNode* head) {
+  ListNode *swapPairs(ListNode *head) {
     if (head == nullptr) return nullptr;
     if (head->next == nullptr) return head;
-    ListNode* next = head->next;
+    ListNode *next = head->next;
     head->next = swapPairs(next->next);
     next->next = head;
     return next;
   }
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   google::InitGoogleLogging(argv[0]);
   // gflags::ParseCommandLineFlags(&argc, &argv, false);
   return 0;

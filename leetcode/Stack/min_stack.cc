@@ -1,8 +1,8 @@
 #include <stack>
 #include <string>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(reverse_input_size, 0, "input data size");
 
@@ -12,24 +12,19 @@ class MinStack {
  private:
   stack<int> s1;
   stack<int> s2;
+
  public:
   void push(int x) {
-	s1.push(x);
-	if (s2.empty() || x <= getMin())  s2.push(x);	    
+    s1.push(x);
+    if (s2.empty() || x <= getMin()) s2.push(x);
   }
   void pop() {
-	if (s1.top() == getMin())  s2.pop();
-	s1.pop();
+    if (s1.top() == getMin()) s2.pop();
+    s1.pop();
   }
-  int top() {
-	return s1.top();
-  }
-  int getMin() {
-	return s2.top();
-  }
+  int top() { return s1.top(); }
+  int getMin() { return s2.top(); }
 };
-
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

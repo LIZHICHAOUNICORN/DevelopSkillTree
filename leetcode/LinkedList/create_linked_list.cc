@@ -5,15 +5,15 @@
 
 #include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
 ListNode* CreateLinkList(vector<int> vec) {
   if (vec.empty()) return nullptr;
-  ListNode *head = new ListNode(vec[0]);
-  ListNode *start = head;
+  ListNode* head = new ListNode(vec[0]);
+  ListNode* start = head;
   for (size_t it = 1; it < vec.size(); ++it) {
     ListNode* node = new ListNode(vec[it]);
     head->next = node;
@@ -37,4 +37,4 @@ void CleanLinkList(ListNode* head) {
   }
 }
 
-#endif // LEETCODE_CREATE_LINKED_LIST_
+#endif  // LEETCODE_CREATE_LINKED_LIST_

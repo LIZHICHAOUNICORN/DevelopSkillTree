@@ -1,12 +1,12 @@
 // Author: zhichaoli
 // Time: 2020年02月12日
 
-#include <vector>
 #include <string>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
 #include <gperftools/profiler.h>
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
 using std::string;
@@ -31,20 +31,15 @@ class Solution {
     vector<int> up_diagonals(2 * n - 1, 0);
     vector<int> down_diagonals(2 * n - 1, 0);
 
-    GenerateSolutions(answer, board, cols, up_diagonals,
-                      down_diagonals, 0, n);
+    GenerateSolutions(answer, board, cols, up_diagonals, down_diagonals, 0, n);
 
     return answer;
   }
 
  private:
-  void GenerateSolutions(vector<vector<string>>& answer,
-                         vector<string>& board,
-                         vector<int>& cols,
-                         vector<int>& up_diagonals,
-                         vector<int>& down_diagonals,
-                         int row_index,
-                         int n) {
+  void GenerateSolutions(vector<vector<string>>& answer, vector<string>& board,
+                         vector<int>& cols, vector<int>& up_diagonals,
+                         vector<int>& down_diagonals, int row_index, int n) {
     if (row_index == n) {
       // If we've surpassed the last row index, then that means
       // the final queen was successfully placed and the board
@@ -65,8 +60,7 @@ class Solution {
         int up_diagonal_index = (x + row_index);
         int down_diagonal_index = (x - row_index + n - 1);
         if (up_diagonals[up_diagonal_index] == 0 &&
-          down_diagonals[down_diagonal_index] == 0) {
-
+            down_diagonals[down_diagonal_index] == 0) {
           // Place the queen, update the data structures to
           // indicate that those rows and diagonals are no
           // longer available, and recurse by moving onto
@@ -76,8 +70,8 @@ class Solution {
           down_diagonals[down_diagonal_index] = 1;
           up_diagonals[up_diagonal_index] = 1;
 
-          GenerateSolutions(answer, board, cols, up_diagonals,
-                            down_diagonals, row_index + 1, n);
+          GenerateSolutions(answer, board, cols, up_diagonals, down_diagonals,
+                            row_index + 1, n);
 
           // Now that the recursive call has finished, back-
           // track by resetting the state that was set, above,

@@ -1,10 +1,10 @@
-#include <vector>
 #include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -29,28 +29,28 @@ public:
 */
 
 class Solution {
-public:
-    vector<vector<int>> levelOrder(Node* root) {
-        vector<vector<int>> ans;
-        if (root == nullptr) return ans;
+ public:
+  vector<vector<int>> levelOrder(Node* root) {
+    vector<vector<int>> ans;
+    if (root == nullptr) return ans;
 
-        queue<Node*> Nodes;
-        Nodes.push(root);
-        while (!Nodes.empty()) {
-            int size = Nodes.size();
-            vector<int> level_result;
-            for (int i = 0; i < size; ++i) {
-                Node* node = Nodes.front();
-                Nodes.pop();
-                level_result.push_back(node->val);
-                for (int j = 0; j < node->children.size(); ++j) {
-                    if (node->children[j]) Nodes.push(node->children[j]);
-                }
-            }
-            ans.push_back(level_result);
+    queue<Node*> Nodes;
+    Nodes.push(root);
+    while (!Nodes.empty()) {
+      int size = Nodes.size();
+      vector<int> level_result;
+      for (int i = 0; i < size; ++i) {
+        Node* node = Nodes.front();
+        Nodes.pop();
+        level_result.push_back(node->val);
+        for (int j = 0; j < node->children.size(); ++j) {
+          if (node->children[j]) Nodes.push(node->children[j]);
         }
-        return ans;
+      }
+      ans.push_back(level_result);
     }
+    return ans;
+  }
 };
 
 int main(int argc, char* argv[]) {

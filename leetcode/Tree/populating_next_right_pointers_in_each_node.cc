@@ -1,10 +1,10 @@
-#include <vector>
 #include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -27,31 +27,31 @@ public:
 */
 
 class Solution {
-public:
-    Node* connect(Node* root) {
-        queue<Node*> Nodes;
-        if (root != nullptr) Nodes.push(root);
-        while (!Nodes.empty()) {
-            int size = Nodes.size();
-            Node* cur = nullptr;
-            Node* pre = nullptr;
-            for (int i = 0; i < size; ++i) {
-                if (i == 0) {
-                    pre = Nodes.front();
-                    Nodes.pop();
-                    cur = pre;
-                } else {
-                    cur = Nodes.front();
-                    Nodes.pop();
-                    pre->next = cur;
-                    pre = cur;
-                }
-                if (cur->left) Nodes.push(cur->left);
-                if (cur->right) Nodes.push(cur->right);
-            }
+ public:
+  Node* connect(Node* root) {
+    queue<Node*> Nodes;
+    if (root != nullptr) Nodes.push(root);
+    while (!Nodes.empty()) {
+      int size = Nodes.size();
+      Node* cur = nullptr;
+      Node* pre = nullptr;
+      for (int i = 0; i < size; ++i) {
+        if (i == 0) {
+          pre = Nodes.front();
+          Nodes.pop();
+          cur = pre;
+        } else {
+          cur = Nodes.front();
+          Nodes.pop();
+          pre->next = cur;
+          pre = cur;
         }
-        return root;
+        if (cur->left) Nodes.push(cur->left);
+        if (cur->right) Nodes.push(cur->right);
+      }
     }
+    return root;
+  }
 };
 
 int main(int argc, char* argv[]) {

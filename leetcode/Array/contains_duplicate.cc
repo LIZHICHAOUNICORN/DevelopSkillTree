@@ -1,9 +1,9 @@
-#include <vector>
 #include <cstdlib>
 #include <set>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 #include <gperftools/profiler.h>
 
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   int data[] = {0, 1, 0, 3, 12};
-  vector<int> input_value(data, data + sizeof(data)/sizeof(int));
+  vector<int> input_value(data, data + sizeof(data) / sizeof(int));
   Solution solu;
   bool ret = solu.containsDuplicate(input_value);
   LOG(INFO) << ret;

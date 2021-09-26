@@ -1,8 +1,8 @@
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_num, 45, "the input value");
 
@@ -19,14 +19,14 @@ class Solution {
     int ret = helper(n, cache);
     return ret;
   }
+
  private:
   int helper(int n, unordered_map<int, int>& cache) {
     if (cache.find(n) != cache.end()) return cache[n];
-    cache[n] = helper(n-1, cache) + helper(n-2, cache);
+    cache[n] = helper(n - 1, cache) + helper(n - 2, cache);
     return cache[n];
   }
 };
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

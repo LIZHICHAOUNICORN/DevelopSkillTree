@@ -1,10 +1,10 @@
-#include <vector>
 #include <stack>
+#include <vector>
 
 #include "./tree_node.h"
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using namespace std;
 
@@ -33,7 +33,6 @@ class Solution1 {
     return root;
   }
 };
-
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

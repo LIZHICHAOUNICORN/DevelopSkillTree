@@ -1,9 +1,9 @@
-#include <vector>
-#include <unordered_map>
 #include <random>
+#include <unordered_map>
+#include <vector>
 
-#include "glog/logging.h"
-#include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 DEFINE_int32(input_value, 10, "input data");
 
@@ -12,10 +12,10 @@ using namespace std;
 class Solution {
  public:
   bool isPowerOfTwo(int n) {
-    if (n < 1 || (n %2 != 0 && n > 1) ) return false;
+    if (n < 1 || (n % 2 != 0 && n > 1)) return false;
     while (n > 1) {
-        if (n % 2 != 0) return false;
-        n = n >> 1;
+      if (n % 2 != 0) return false;
+      n = n >> 1;
     }
     return true;
   }

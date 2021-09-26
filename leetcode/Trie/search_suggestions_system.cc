@@ -1,9 +1,9 @@
 #include <algorithm>
+#include <memory>
 #include <queue>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <memory>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"

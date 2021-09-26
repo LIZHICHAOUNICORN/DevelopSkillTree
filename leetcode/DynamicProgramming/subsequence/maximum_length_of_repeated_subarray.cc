@@ -1,12 +1,12 @@
-#include <vector>
-#include <iostream>
-#include <limits.h>
 #include <algorithm>
+#include <string>
+#include <vector>
 
-// #include "glog/logging.h"
-// #include "gflags/gflags.h"
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 using std::vector;
+using std::string;
 using std::max;
 
 class Solution {
@@ -26,12 +26,15 @@ public:
     }
 };
 
-
-
-
 int main(int argc, char* argv[]) {
-  // google::InitGoogleLogging(argv[0]);
-  // gflags::ParseCommandLineFlags(&argc, &argv, false);
+  google::InitGoogleLogging(argv[0]);
+  gflags::ParseCommandLineFlags(&argc, &argv, false);
+
+  vector<int> nums1({1,2,3,2,1});
+  vector<int> nums2({3,2,1,4,7});
+
   Solution solu;
+  int ret = solu.findLength(nums1, nums2);
+  LOG(INFO) << ret;
   return 0;
 }

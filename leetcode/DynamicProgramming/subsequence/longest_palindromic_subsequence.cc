@@ -4,11 +4,13 @@
 #include <vector>
 
 using std::vector;
-using std::min;
+using std::max;
 using std::string;
 
-// Time O(n^2)
-// Space O(n^2)
+// Problem: https://leetcode-cn.com/problems/longest-palindromic-subsequence/
+
+#include "third_party/gflags/include/gflags.h"
+#include "third_party/glog/include/logging.h"
 
 class Solution {
  public:
@@ -29,9 +31,12 @@ class Solution {
 };
 
 int main(int argc, char* argv[]) {
-  // google::InitGoogleLogging(argv[0]);
-  // gflags::ParseCommandLineFlags(&argc, &argv, false);
+  google::InitGoogleLogging(argv[0]);
+  gflags::ParseCommandLineFlags(&argc, &argv, false);
+
   Solution solu;
+  int ret = solu.longestPalindromeSubseq("bbbab");
+  LOG(INFO) << ret;
 
   return 0;
 }

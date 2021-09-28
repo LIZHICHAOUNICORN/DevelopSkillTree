@@ -3,6 +3,10 @@
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
 
+// Problem: https://leetcode-cn.com/problems/path-sum-iii/
+// Solution:
+// https://leetcode-cn.com/problems/path-sum-iii/solution/acmjin-pai-ti-jie-dfs-shu-shang-qian-zhu-zu3k/
+
 using namespace std;
 
 struct TreeNode {

@@ -1,5 +1,70 @@
 # Algorithms and Data Structures
 
+## TODO List
+- [ ] Basic Operation
+  - [x] Array
+  - [x] String
+  - [ ] Sort
+  - [ ] Bucket-sort
+  - [ ] Counting-sort
+  - [ ] Radix-sort
+  - [x] Matrix
+  - [x] Simulation
+  - [ ] Enumeration
+  - [ ] String-matching
+- [ ] Algorithms
+  - [x] Dynamic-programming
+  - [x] Depth-first-search
+  - [x] Breadth-first-search
+  - [x] greedy
+  - [x] binary-search
+  - [x] backtracking
+  - [x] recursion
+  - [ ] divide-and-conquer
+  - [x] memoization
+  - [ ] quickselect
+  - [ ] merge-sort
+- [ ] Basic Data Structures
+  - [ ] hash-table
+  - [x] tree
+  - [x] binary-tree
+  - [x] stack
+  - [x] heap-priority-queue
+  - [ ] graph
+  - [x] linked-list
+  - [x] binary-search-tree
+  - [ ] monotonic-stack
+  - [x] queue
+  - [ ] ordered-set
+  - [ ] topological-sort
+  - [ ] shortest-path
+  - [ ] doubly-linked-list
+  - [ ] monotonic-queue
+  - [ ] minimum-spanning-tree
+  - [ ] strongly-connected-component
+  - [ ] eulerian-circuit
+  - [ ] biconnected-component
+- [ ] Advance Data Structures
+  - [ ] union-find
+  - [x] trie
+  - [ ] segment-tree
+  - [ ] binary-indexed-tree
+  - [ ] suffix-array
+- [ ] Trick
+  - [x] two-pointers
+  - [ ] bit-manipulation
+  - [ ] sliding-window
+  - [x] prefix-sum
+  - [ ] counting
+- [ ] Math
+  - [x] math
+  - [ ] geometry
+  - [ ] game-theory
+  - [ ] randomized
+  - [ ] combinatorics
+- [ ] Other
+  - [x] design
+
 
 ## Trie and Disjoint set（字典树与并查集）
 

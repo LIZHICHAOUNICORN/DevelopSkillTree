@@ -14,10 +14,17 @@ struct ListNode {
 ```
 
 ## 基本操作
+### 构造链表
+### 查找
+查找特定节点，只能通过遍历，这个操作的复杂度是O(n).
 ### 删除
-在进行链表删除节点的操作时，经常会因为对当前节点进行操作而导致内存或指针出现问题，有两个小技巧可以解决这个问题:
+删除特定节点复杂度是O(1)，在进行链表删除节点的操作时，经常会因为对当前节点进行操作而导致内存或指针出现问题，有两个小技巧可以解决这个问题:
 1. 尽量处理当前节点的下一个节点而非当前节点本身；
 2. 是建立一个虚拟节点 (dummy node)，使其指向当前链表的头节点，这样即使原链表 所有节点全被删除，也会有一个 dummy 存在，返回 dummy->next 即可。
+
+题目：[83. remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+
+
 
 ### 插入
 ### 排序
@@ -27,6 +34,7 @@ struct ListNode {
 
 ## 应用场景
 ## 练习
+- [ ] 83. remove-duplicates-from-sorted-list
 - [ ] 206. Reverse Linked List
 - [ ] 21. Merge Two Sorted Lists 
 - [ ] 24. Swap Nodes in Pairs 

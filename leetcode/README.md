@@ -24,6 +24,7 @@
   - [x] memoization
   - [ ] quickselect
   - [ ] merge-sort
+  - [ ] kmp
 - [ ] Basic Data Structures
   - [ ] hash-table
   - [x] tree
@@ -47,6 +48,7 @@
 - [ ] Advance Data Structures
   - [ ] union-find
   - [x] trie
+  - [ ] Aho–Corasick algorithm(热词)
   - [ ] segment-tree
   - [ ] binary-indexed-tree
   - [ ] suffix-array

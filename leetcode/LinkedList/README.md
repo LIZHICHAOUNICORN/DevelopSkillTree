@@ -22,9 +22,11 @@ struct ListNode {
 1. 尽量处理当前节点的下一个节点而非当前节点本身；
 2. 是建立一个虚拟节点 (dummy node)，使其指向当前链表的头节点，这样即使原链表 所有节点全被删除，也会有一个 dummy 存在，返回 dummy->next 即可。
 
-题目：[83. remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
-
-
+题目：
+- [x] [83. remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
+- [x] [1474. delete-n-nodes-after-m-nodes-of-a-linked-list](https://leetcode-cn.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/)
+- [x] [0203. delete-middle-node-lcci/](https://leetcode-cn.com/problems/delete-middle-node-lcci/)
+- [x] [剑指 Offer 18. delete-middle-node-lcci/](https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/)
 
 ### 插入
 ### 排序

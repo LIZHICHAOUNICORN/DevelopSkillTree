@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "mem_pack",
-    srcs = ["mem_pack.cc"],
+    name = "raii",
+    srcs = ["raii.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -11,22 +11,9 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
-
 cc_binary(
-    name = "mem_class_size",
-    srcs = ["mem_class_size.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
-    ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
-
-cc_binary(
-    name = "mem_class_virtual_size",
-    srcs = ["mem_class_virtual_size.cc"],
+    name = "raii_resolve",
+    srcs = ["raii_resolve.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

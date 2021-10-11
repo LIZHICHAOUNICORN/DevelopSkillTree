@@ -35,3 +35,39 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
+
+cc_binary(
+    name = "smart_ptr",
+    srcs = ["smart_ptr.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "uniqure_ptr",
+    srcs = ["smart_ptr.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "problem_circular_reference",
+    srcs = ["problem_circular_reference.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)

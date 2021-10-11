@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "container_with_most_water",
-    srcs = ["container_with_most_water.cc"],
+    name = "lambda",
+    srcs = ["lambda.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -11,10 +11,9 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
-
 cc_binary(
-    name = "virtual_table",
-    srcs = ["virtual_table.cc"],
+    name = "right_reference",
+    srcs = ["right_reference.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -23,10 +22,9 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
-
 cc_binary(
-    name = "sizeof_strlen",
-    srcs = ["sizeof_strlen.cc"],
+    name = "constructor",
+    srcs = ["constructor.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

@@ -3,7 +3,7 @@
 ### 实现
 一种是递归方式
 
-```
+```cpp
 
 class Trie {
  private:

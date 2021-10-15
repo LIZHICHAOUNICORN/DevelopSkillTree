@@ -5,7 +5,7 @@
 
 using std::vector;
 
-// Problem: https://leetcode-cn.com/problems/search-a-2d-matrix-ii/submissions/
+// Problem: https://leetcode-cn.com/problems/search-a-2d-matrix-ii
 
 // 暴力法
 class Solution1 {

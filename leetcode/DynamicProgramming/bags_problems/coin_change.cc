@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <vector>
+#include <climits>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
@@ -10,6 +11,7 @@ using namespace std;
  * Problems: https://leetcode-cn.com/problems/coin-change/
  */
 
+// version 1
 class Solution {
  public:
   int coinChange(vector<int>& coins, int amount) {
@@ -27,6 +29,24 @@ class Solution {
   }
 };
 
+// version 2
+class Solution {
+ public:
+  int coinChange(vector<int>& coins, int amount) {
+    vector<int> dp(amount + 1, INT_MAX);
+    dp[0] = 0;
+    for (int i = 0; i < coins.size(); i++) {      // 遍历物品
+      for (int j = coins[i]; j <= amount; j++) {  // 遍历背包
+        if (dp[j - coins[i]] != INT_MAX) {  // 如果dp[j - coins[i]]是初始值则跳过
+          dp[j] = min(dp[j - coins[i]] + 1, dp[j]);
+        }
+      }
+    }
+    if (dp[amount] == INT_MAX) return -1;
+    return dp[amount];
+  }
+};
+
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
@@ -36,6 +56,10 @@ int main(int argc, char* argv[]) {
 
   Solution solu;
   int ret = solu.coinChange(coins, amount);
+  LOG(INFO) << ret;
+
+  Solution1 solu1;
+  ret = solu1.coinChange(coins, amount);
   LOG(INFO) << ret;
 
   return 0;

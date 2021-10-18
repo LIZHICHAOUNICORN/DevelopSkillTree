@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "two_sum_ii_input_array_is_sorted",
-    srcs = ["two_sum_ii_input_array_is_sorted.cc"],
+    name = "container_with_most_water",
+    srcs = ["container_with_most_water.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -13,8 +13,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "intersection_of_two_arrays",
-    srcs = ["intersection_of_two_arrays.cc"],
+    name = "running_sum_of_1d_array",
+    srcs = ["running_sum_of_1d_array.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -25,8 +25,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "lian_biao_zhong_dao_shu_di_kge_jie_dian_lcof",
-    srcs = ["lian_biao_zhong_dao_shu_di_kge_jie_dian_lcof.cc"],
+    name = "sum_of_all_odd_length_subarrays",
+    srcs = ["sum_of_all_odd_length_subarrays.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -37,8 +37,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "sort_colors",
-    srcs = ["sort_colors.cc"],
+    name = "valid_sudoku",
+    srcs = ["valid_sudoku.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -49,8 +49,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "word_search",
-    srcs = ["word_search.cc"],
+    name = "meeting_rooms_ii",
+    srcs = ["meeting_rooms_ii.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',
@@ -61,20 +61,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "expression_add_operators",
-    srcs = ["expression_add_operators.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
-    ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
-
-cc_binary(
-    name = "decode_string",
-    srcs = ["decode_string.cc"],
+    name = "find_all_anagrams_in_a_string",
+    srcs = ["find_all_anagrams_in_a_string.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

@@ -8,5 +8,6 @@ cc_binary(
         '//third_party/glog:glog',
         '//third_party/gflags:gflags',
     ],
-    linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
 )

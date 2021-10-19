@@ -40,6 +40,7 @@
 
 ### 设计模式
 有 23 种经典的设计模式。它们又可以分为三大类：创建型、结构型、行为型。
+![设计模式分类.](/image/design_patterns.png)
 
 ### 编程规范
 [google code styleguide](https://google.github.io/styleguide/cppguide.html)

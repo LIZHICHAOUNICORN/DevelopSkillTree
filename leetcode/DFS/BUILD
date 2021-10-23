@@ -23,3 +23,15 @@ cc_binary(
     # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
     linkopts = ['-lm', '-lpthread', '-lrt'],
 )
+
+cc_binary(
+    name = "binary_tree_maximum_path_sum",
+    srcs = ["binary_tree_maximum_path_sum.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+)

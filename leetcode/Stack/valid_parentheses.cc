@@ -1,12 +1,13 @@
 #include <stack>
 #include <string>
+#include <unordered_map>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
 
-DEFINE_int32(reverse_input_size, 0, "input data size");
-
 using namespace std;
+
+// Problems: https://leetcode-cn.com/problems/valid-parentheses/
 
 class Solution {
  public:
@@ -32,7 +33,7 @@ class Solution {
   }
 };
 
-class Solution {
+class Solution1 {
  public:
   bool isValid(string s) {
     if (s.empty()) return true;
@@ -61,6 +62,10 @@ class Solution {
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
+  string s("{[]}");
+  Solution solu;
+  bool ret = solu.isValid(s);
+  LOG(INFO) << ret;
 
   return 0;
 }

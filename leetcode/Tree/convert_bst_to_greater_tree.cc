@@ -51,6 +51,6 @@ int main(int argc, char* argv[]) {
   gflags::ParseCommandLineFlags(&argc, &argv, false);
 
   Solution solu;
-  TreeNode * node = solu.convertBST(nullptr);
+  TreeNode* node = solu.convertBST(nullptr);
   return 0;
 }

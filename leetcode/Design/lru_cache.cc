@@ -102,10 +102,6 @@ class LRUCache {
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
-  Twitter tw;
-  tw.postTweet(1, 5);
-  tw.postTweet(1, 3);
-  tw.getNewsFeed(1);
 
   return 0;
 }

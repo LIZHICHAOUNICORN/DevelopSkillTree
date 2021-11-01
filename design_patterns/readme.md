@@ -370,7 +370,7 @@ DRY原则：它的英文描述为:Don’t Repeat Yourself。中文直译为:不�
 
 ## 二十二. 学习如何发现代码质 量问题
 
-**如何发现代码质量问题?， code review checklist**
+**如何发现代码质量问题?， code review checklist**  
 目录设置是否合理、模块划分是否清晰、代码结构是否满足“高内聚、松耦合”?  
 是否遵循经典的设计原则和设计思想(SOLID、DRY、KISS、YAGNI、LOD 等)?  
 设计模式是否应用得当?是否有过度设计?  

@@ -10,6 +10,12 @@
   - [x] 降维(状态压缩)  
  
 
-## 线性dp 
+## 经典动态规划问题
 
+- [ ] [基础问题]()
+- [x] [子序列问题](https://github.com/LIZHICHAOUNICORN/DevelopSkillTree/blob/main/leetcode/DynamicProgramming/subsequence/README.md)   
+- [ ] [背包问题]()  
+- [ ] [打家劫舍问题]()  
+- [ ] [买卖股票问题]()
+- [ ] [TBD]()  
 

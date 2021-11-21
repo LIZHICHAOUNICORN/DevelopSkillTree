@@ -30,8 +30,15 @@
 - [x] edit-distance
 
 ## 回文
-1. [647. 回文子串](https://leetcode-cn.com/problems/palindromic-substrings)    
-2. [516. 最长回文子序列](https://leetcode-cn.com/problems/longest-palindromic-subsequence)  
+1. [647. 回文子串(连续)](https://leetcode-cn.com/problems/palindromic-substrings)    
+2. [516. 最长回文子序列(不连续)](https://leetcode-cn.com/problems/longest-palindromic-subsequence)  
 
 - [x] palindromic-substrings
 - [x] longest-palindromic-subsequence
+
+## 总结
+一般分为两种： 连续的子串以及非连续的子序列。
+1. 例如回文，编辑距离问题 设计动态规划方程一般是针对字符串s[i] == s[j]和不相等两种情况。
+2. 非连续时，需要更新不相等的状态。
+
+

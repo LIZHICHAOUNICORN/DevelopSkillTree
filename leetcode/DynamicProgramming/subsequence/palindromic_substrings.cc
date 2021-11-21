@@ -38,6 +38,9 @@ class Solution {
 };
 
 // DP
+// s[i] == s[j] :
+//  dp[i][j] = true (j - i <= 1, 由于定义状态，dp[i][j]是s[i, j], j 一定大于i)
+//  dp[i][j] = dp[i+1][j-1] (j -i > 1)
 class Solution1 {
  public:
   int countSubstrings(string s) {
@@ -60,7 +63,7 @@ class Solution1 {
   }
 };
 
-// DP
+// DP : 情况一二和情况三合并
 class Solution2 {
  public:
   int countSubstrings(string s) {

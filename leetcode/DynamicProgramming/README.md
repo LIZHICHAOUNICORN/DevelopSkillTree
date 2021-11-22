@@ -12,7 +12,7 @@
 
 ## 经典动态规划问题
 
-- [ ] [基础问题]()
+- [x] [基础问题](https://github.com/LIZHICHAOUNICORN/DevelopSkillTree/tree/main/leetcode/DynamicProgramming/basic_problem)
 - [x] [子序列问题](https://github.com/LIZHICHAOUNICORN/DevelopSkillTree/blob/main/leetcode/DynamicProgramming/subsequence/README.md)   
 - [ ] [背包问题]()  
 - [ ] [打家劫舍问题]()  

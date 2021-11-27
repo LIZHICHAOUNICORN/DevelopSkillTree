@@ -1,11 +1,11 @@
 import logging
-from logging import CRITICAL
-from logging import DEBUG
-from logging import ERROR
-from logging import INFO
-from logging import NOTEST
-from logging import WARN
-from logging import WARNING
+# from logging import CRITICAL
+#from logging import DEBUG
+#from logging import ERROR
+#from logging import INFO
+#from logging import NOTEST
+#from logging import WARN
+#from logging import WARNING
 
 import os
 import sys

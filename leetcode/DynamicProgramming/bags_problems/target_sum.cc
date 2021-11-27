@@ -1,12 +1,15 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
 
-using std::vector;
+using namespace std;
 
 // Problem: https://leetcode-cn.com/problems/target-sum/
+// Solutions:
+// https://leetcode-cn.com/problems/target-sum/solution/gong-shui-san-xie-yi-ti-si-jie-dfs-ji-yi-et5b/
 
 // backtrack version
 // Time: O(2^n)
@@ -29,6 +32,31 @@ class Solution {
       backtrack(nums, target, index + 1, sum + nums[index]);
       backtrack(nums, target, index + 1, sum - nums[index]);
     }
+  }
+};
+
+// 原始方法
+class Solution3 {
+ public:
+  int findTargetSumWays(vector<int>& nums, int target) {
+    int sum = std::accumulate(nums.begin(), nums.end(), 0);
+    if (std::abs(target) > sum) return 0;
+
+    int m = nums.size() + 1;
+    int n = sum * 2 + 1;
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    // dp[0][0+sum]: nums中前0个， 其求和为0时的方法数为1；
+    dp[0][0 + sum] = 1;
+
+    for (int i = 1; i < m; i++) {
+      int x = nums[i - 1];
+      for (int j = -sum; j <= sum; j++) {
+        if ((j - x) + sum >= 0) dp[i][j + sum] += dp[i - 1][(j - x) + sum];
+        if ((j + x) + sum <= 2 * sum)
+          dp[i][j + sum] += dp[i - 1][(j + x) + sum];
+      }
+    }
+    return dp[m - 1][sum + target];
   }
 };
 
@@ -88,7 +116,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
 
-  Solution solu;
+  Solution3 solu;
   vector<int> nums({1, 1, 1, 1, 1});
   int target = 3;
   int ret = solu.findTargetSumWays(nums, target);

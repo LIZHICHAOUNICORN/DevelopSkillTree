@@ -9,9 +9,45 @@
 using std::vector;
 
 // Problem: https://leetcode-cn.com/problems/partition-equal-subset-sum/
+// Solution:
+// https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/0-1-bei-bao-wen-ti-xiang-jie-zhen-dui-ben-ti-de-yo/
 
-// base version
+// base version, 2D dp
 class Solution {
+ public:
+  bool canPartition(vector<int>& nums) {
+    int sum = std::accumulate(nums.begin(), nums.end(), 0);
+    if (sum % 2 != 0) return false;
+    sum = sum / 2;
+
+    vector<vector<bool>> dp(nums.size(), vector<bool>(sum + 1, false));
+    // 因为候选数 nums[0] 是正整数，凑不出和为0
+    dp[0][0] = false;
+    if (nums[0] <= sum) dp[0][nums[0]] = true;
+
+    for (int i = 1; i < nums.size(); ++i) {
+      for (int j = 0; j <= sum; ++j) {
+        // 最差就是这次nums[i] 不放入，维持之前的状态
+        dp[i][j] = dp[i - 1][j];
+        // 如果签好num[i] 是当前的重量
+        if (nums[i] == j) {
+          dp[i][j] = true;
+          continue;
+        }
+        // 如果nums[i] 小于需要的重量，
+        // 那么去上个或者取之前的
+        if (nums[i] < j) {
+          dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i]];
+        }
+      }
+    }
+    return dp[nums.size() - 1][sum];
+  }
+};
+
+
+// 1D dp
+class Solution1 {
  public:
   bool canPartition(vector<int>& nums) {
     int sum = 0;
@@ -34,7 +70,7 @@ class Solution {
 };
 
 // version 2
-class Solution1 {
+class Solution2 {
  public:
   bool canPartition(vector<int>& nums) {
     if (nums.size() < 2) return false;

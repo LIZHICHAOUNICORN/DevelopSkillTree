@@ -26,6 +26,37 @@ class Solution {
   }
 };
 
+// 2D
+// dp[i][j] = max(dp[i-1][j], dp[i][j-weights[i]] + values[i])
+class Solution1 {
+ public:
+  int MaxValue2D(const vector<int>& weights, const vector<int>& values,
+                 const int bag_weight) {
+    // dp array
+    int m = weights.size();
+    int n = bag_weight + 1;
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    // initial
+    for (int j = 0; j <= bag_weight; j++) {
+      // 显然当只有一件物品的时候，在容量允许的情况下，能选多少件就选多少件
+      int maxK = j / weights[0];
+      dp[0][j] = maxK * values[0];
+    }
+
+    // Number of weights;
+    for (int i = 1; i < weights.size(); ++i) {
+      for (int j = 0; j <= bag_weight; ++j) {
+        for (int k = 1; k <= j / weights[i]; k++) {
+          dp[i][j] = std::max(dp[i - 1][j],
+                              dp[i - 1][j - k * weights[i]] + k * values[i]);
+        }
+      }
+    }
+
+    return dp[m - 1][n - 1];
+  }
+};
+
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
@@ -36,6 +67,9 @@ int main(int argc, char* argv[]) {
 
   Solution solu;
   int max_value = solu.MaxValue1D(weights, values, bag_weight);
-  LOG(INFO) << max_value;
+
+  Solution1 solu1;
+  int max_value1 = solu1.MaxValue2D(weights, values, bag_weight);
+  LOG(INFO) << max_value << " " << max_value1;
   return 0;
 }

@@ -14,6 +14,7 @@ using std::vector;
  */
 
 // version 1
+// dp[i][j] = max(dp[i-1][j], dp[i-1][j-weights[i]] + values[i])
 class Solution {
  public:
   int MaxValue2D(const vector<int>& weights, const vector<int>& values,

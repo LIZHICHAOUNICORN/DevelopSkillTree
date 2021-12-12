@@ -47,3 +47,14 @@ cc_binary(
     # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
     linkopts = ['-lm', '-lpthread', '-lrt'],
 )
+cc_binary(
+    name = "coloring_a_border",
+    srcs = ["coloring_a_border.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+)

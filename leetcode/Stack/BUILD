@@ -61,6 +61,17 @@ cc_binary(
 )
 
 cc_binary(
+    name = "basic_calculator",
+    srcs = ["basic_calculator.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+)
+cc_binary(
     name = "basic_calculator_ii",
     srcs = ["basic_calculator_ii.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",

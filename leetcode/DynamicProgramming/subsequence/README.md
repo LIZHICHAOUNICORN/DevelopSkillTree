@@ -2,10 +2,12 @@
 
 ## 子序列非连续问题
 1. [300.最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence)    
+2. [354. 俄罗斯套娃信封问题] (https://leetcode-cn.com/problems/russian-doll-envelopes)    
 2. [1143.最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence)    
 3. [1035.不相交的线](https://leetcode-cn.com/problems/uncrossed-lines)  
 
 - [x] longest-increasing-subsequence
+- [x] russian-doll-envelopes 
 - [x] longest-common-subsequence
 - [x] uncrossed-lines
 

@@ -81,3 +81,60 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
+cc_binary(
+    name = "point",
+    srcs = ["point.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+cc_binary(
+    name = "multiple_inheritance",
+    srcs = ["multiple_inheritance.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+cc_binary(
+    name = "diamond_inheritance",
+    srcs = ["diamond_inheritance.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "virtual_inheritance",
+    srcs = ["virtual_inheritance.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
+cc_binary(
+    name = "single_inheritance",
+    srcs = ["single_inheritance.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)

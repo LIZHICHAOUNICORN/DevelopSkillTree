@@ -64,8 +64,9 @@ int main(int argc, char* argv[]) {
              // 因此，内存泄漏。
 
   // 虚函数表
-  BaseClass* ptr = new Derive();
+  Derive* ptr = new Derive();
   ptr->B_fun1();  // Base::B_fun1()
+  delete ptr;
 
   return 0;
 }

@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <deque>
-#include <limits>
+#include <limits.h>
 #include <stack>
 #include <vector>
 

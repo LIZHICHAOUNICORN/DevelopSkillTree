@@ -82,3 +82,25 @@ cc_binary(
     # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
     linkopts = ['-lm', '-lpthread', '-lrt'],
 )
+cc_binary(
+    name = "sliding_window_maximum",
+    srcs = ["sliding_window_maximum.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+)
+cc_binary(
+    name = "shortest_subarray_with_sum_at_least_k",
+    srcs = ["shortest_subarray_with_sum_at_least_k.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+)

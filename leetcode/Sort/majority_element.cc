@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// Problem: https://leetcode-cn.com/problems/majority-element
+
 class Solution {
  public:
   int majorityElement(vector<int>& nums) {
@@ -16,8 +18,6 @@ class Solution {
   }
 };
 
-// 作者：LeetCode-Solution
-// 链接：https://leetcode-cn.com/problems/majority-element/solution/duo-shu-yuan-su-by-leetcode-solution/
 class Solution {
  public:
   int majorityElement(vector<int>& nums) {

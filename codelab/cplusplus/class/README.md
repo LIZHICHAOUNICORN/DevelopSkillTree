@@ -46,6 +46,7 @@ gdb> x/16x 0x004055d8
 0x4055e8 <GrandChild::f()+16>:  0x4800029e  0xf116058b  0x89480003  0xef66e8c7
 0x4055f8 <GrandChild::f()+32>:  0x8b48ffff  0x03f10f15  0xd6894800  0xe8c78948
 0x405608 <GrandChild::f()+48>:  0xffffef64  0x4855c3c9  0x8348e589  0x894810ec
+```
 
 ## RTTI
 - [x] 使用typeid 查看运行是的状态。  typeid.cc  

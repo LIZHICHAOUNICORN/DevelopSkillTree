@@ -2,7 +2,7 @@
 
 ## 子序列非连续问题
 1. [300.最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence)    
-2. [354. 俄罗斯套娃信封问题] (https://leetcode-cn.com/problems/russian-doll-envelopes)    
+2. [354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes)    
 2. [1143.最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence)    
 3. [1035.不相交的线](https://leetcode-cn.com/problems/uncrossed-lines)  
 
@@ -34,6 +34,7 @@
 ## 回文
 1. [647. 回文子串(连续)](https://leetcode-cn.com/problems/palindromic-substrings)    
 2. [516. 最长回文子序列(不连续)](https://leetcode-cn.com/problems/longest-palindromic-subsequence)  
+3. [132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)
 
 - [x] palindromic-substrings
 - [x] longest-palindromic-subsequence

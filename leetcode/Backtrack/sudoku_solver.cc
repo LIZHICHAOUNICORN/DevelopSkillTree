@@ -89,7 +89,9 @@ class Solution1 {
       return;
     }
 
-    auto[i, j] = spaces[pos];
+    const auto& it = spaces[pos];
+    int i = it.first;
+    int j = it.second;
     int mask = ~(line[i] | column[j] | block[i / 3][j / 3]) & 0x1ff;
     for (; mask && !valid; mask &= (mask - 1)) {
       int digitMask = mask & (-mask);

@@ -1,11 +1,10 @@
 
 # 实现字符串类
-
-
+[string](https://github.com/LIZHICHAOUNICORN/DevelopSkillTree/blob/main/leetcode/Design/string.cc)
 # 字符串问题
 
-- [] 回文字符串
-- [] 相等字符串
+- [ ] 回文字符串
+- [ ] 相等字符串
 
 # 字符串算法
 

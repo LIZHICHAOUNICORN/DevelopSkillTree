@@ -8,6 +8,8 @@
 
 namespace base {
 
+// source from: https://www.zhihu.com/question/21923021
+
 // 暴力构建next数组
 // O(len(pattern)^2)
 void KMP::BuildNext(const std::string& pattern) {

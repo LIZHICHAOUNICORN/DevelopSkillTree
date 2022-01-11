@@ -7,7 +7,7 @@
 #include "third_party/glog/include/logging.h"
 
 // Problem:
-// https://leetcode-cn.com/problhttps://leetcode-cn.com/problems/regular-expression-matching/
+// https://leetcode-cn.com/problems/regular-expression-matching/
 // Solutions:
 // https://leetcode-cn.com/problems/regular-expression-matching/solution/qin-huai-gu-dao-zheng-ze-biao-da-shi-pi-rnl7g/
 

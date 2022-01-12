@@ -1,135 +1,124 @@
 #include <algorithm>
-#include <cassert>
+#include <iostream>
 #include <queue>
+#include <set>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
 
-using std::vector;
-using std::queue;
-using std::string;
-using std::pair;
-using std::unordered_map;
-using std::find;
+// Problem: https://leetcode-cn.com/problems/word-ladder-ii/
+// Solution:
+// https://leetcode-cn.com/problems/word-ladder-ii/solution/dan-ci-jie-long-ii-by-leetcode-solution/
 
-/// BFS
-/// Time Complexity: O(n*n)
-/// Space Complexity: O(n)
+using namespace std;
+
 class Solution {
  public:
   vector<vector<string>> findLadders(string beginWord, string endWord,
-                                     vector<string>& wordList) {
-    int end =
-        find(wordList.begin(), wordList.end(), endWord) - wordList.begin();
-    if (end == wordList.size()) return {};
+                                     vector<string> &wordList) {
+    vector<vector<string>> res;
+    // 因为需要快速判断扩展出的单词是否在 wordList 里，因此需要将 wordList
+    // 存入哈希表，这里命名为「字典」
+    unordered_set<string> dict = {wordList.begin(), wordList.end()};
+    // 修改以后看一下，如果根本就不在 dict 里面，跳过
+    if (dict.find(endWord) == dict.end()) {
+      return res;
+    }
+    // 特殊用例处理
+    dict.erase(beginWord);
 
-    int begin =
-        find(wordList.begin(), wordList.end(), beginWord) - wordList.begin();
-    if (begin == wordList.size()) wordList.push_back(beginWord);
-
-    int n = wordList.size();
-
-    // Create Graph
-    // Build two-dimensional matrix,
-    // index : it's similar string;
-    vector<vector<int>> g(n, vector<int>());
-    for (int i = 0; i < wordList.size(); i++) {
-      for (int j = i + 1; j < wordList.size(); j++) {
-        if (similar(wordList[i], wordList[j])) {
-          g[i].push_back(j);
-          g[j].push_back(i);
+    // 第 1 步：广度优先遍历建图
+    // 记录扩展出的单词是在第几次扩展的时候得到的，key：单词，value：在广度优先遍历的第几层
+    unordered_map<string, int> steps = {{beginWord, 0}};
+    // 记录了单词是从哪些单词扩展而来，key：单词，value：单词列表，这些单词可以变换到
+    // key ，它们是一对多关系
+    unordered_map<string, set<string>> from = {{beginWord, {}}};
+    int step = 0;
+    bool found = false;
+    queue<string> q = queue<string>{{beginWord}};
+    int wordLen = beginWord.length();
+    while (!q.empty()) {
+      step++;
+      int size = q.size();
+      for (int i = 0; i < size; i++) {
+        const string currWord = move(q.front());
+        string nextWord = currWord;
+        q.pop();
+        // 将每一位替换成 26 个小写英文字母
+        for (int j = 0; j < wordLen; ++j) {
+          const char origin = nextWord[j];
+          for (char c = 'a'; c <= 'z'; ++c) {
+            nextWord[j] = c;
+            if (steps[nextWord] == step) {
+              from[nextWord].insert(currWord);
+            }
+            if (dict.find(nextWord) == dict.end()) {
+              continue;
+            }
+            // 如果从一个单词扩展出来的单词以前遍历过，距离一定更远，为了避免搜索到已经遍历到，且距离更远的单词，需要将它从
+            // dict 中删除
+            dict.erase(nextWord);
+            // 这一层扩展出的单词进入队列
+            q.push(nextWord);
+            // 记录 nextWord 从 currWord 而来
+            from[nextWord].insert(currWord);
+            // 记录 nextWord 的 step
+            steps[nextWord] = step;
+            if (nextWord == endWord) {
+              found = true;
+            }
+          }
+          nextWord[j] = origin;
         }
       }
+      if (found) {
+        break;
+      }
     }
-
-    // use bfs creat distance map
-    // distance: every index related distance step
-    // beginning from start point
-    unordered_map<int, int> distance;
-    bfs(g, begin, end, distance);
-
-    // backtracking: according to distance, find minus path;
-    vector<vector<string>> res;
-    vector<int> tres = {begin};
-    GetRes(g, begin, end, distance, wordList, tres, res);
-
+    // 第 2 步：深度优先遍历找到所有解，从 endWord 恢复到 beginWord
+    // ，所以每次尝试操作 path 列表的头部
+    if (found) {
+      vector<string> Path = {endWord};
+      dfs(res, endWord, from, Path);
+    }
     return res;
   }
 
- private:
-  void bfs(const vector<vector<int>>& g, int begin, int end,
-           unordered_map<int, int>& distance) {
-    queue<int> q;
-    q.push(begin);
-    distance[begin] = 0;
-
-    while (!q.empty()) {
-      int cur = q.front();
-      q.pop();
-      // assert(distance.find(cur) != distance.end());
-
-      for (int j : g[cur]) {
-        if (distance.find(j) == distance.end()) {
-          distance[j] = distance[cur] + 1;
-          q.push(j);
-        }
-      }
-    }
-  }
-
-  void GetRes(vector<vector<int>>& g, int cur, int end,
-              unordered_map<int, int>& distance, const vector<string>& wordList,
-              vector<int>& tres, vector<vector<string>>& res) {
-    if (tres.size() > 0 && tres[tres.size() - 1] == end) {
-      res.push_back(GetPath(tres, wordList));
+  void dfs(vector<vector<string>> &res, const string &Node,
+           unordered_map<string, set<string>> &from, vector<string> &path) {
+    if (from[Node].empty()) {
+      res.push_back({path.rbegin(), path.rend()});
       return;
     }
-
-    for (int i : g[cur]) {
-      if (distance[i] == distance[cur] + 1) {
-        tres.push_back(i);
-        GetRes(g, i, end, distance, wordList, tres, res);
-        tres.pop_back();
-      }
+    for (const string &Parent : from[Node]) {
+      path.push_back(Parent);
+      dfs(res, Parent, from, path);
+      path.pop_back();
     }
-
-    return;
-  }
-
-  vector<string> GetPath(const vector<int>& path,
-                         const vector<string>& wordList) {
-    vector<string> ret;
-    for (const int e : path) {
-      ret.push_back(wordList[e]);
-    }
-    return ret;
-  }
-
-  bool similar(const string& word1, const string& word2) {
-    // assert(word1 != "" && word1.size() == word2.size() && word1 != word2);
-
-    int diff = 0;
-    for (int i = 0; i < word1.size(); i++) {
-      if (word1[i] != word2[i]) {
-        diff++;
-        if (diff > 1) return false;
-      }
-    }
-    return true;
   }
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
+
+  vector<string> wordList({"hot", "dot", "dog", "lot", "log", "cog"});
+  string source("hit");
+  string target("cog");
+
   Solution solu;
-  string start("hit");
-  string end("cog");
-  vector<string> bank = {"hot", "dot", "dog", "lot", "log", "cog"};
-  vector<vector<string>> ret = solu.findLadders(start, end, bank);
+  auto ret = solu.findLadders(source, target, wordList);
+  for (auto &vec : ret) {
+    for (auto &str : vec) {
+      std::cout << str << " ";
+    }
+    std::cout << std::endl;
+  }
+
   return 0;
 }

@@ -65,7 +65,7 @@ def decode_logits(logits, batch_size, seq_len):
     for ret in result:
         hyp = ''
         for r in ret:
-            hyp += chr(r+ord('A')-1)
+            hyp += chr(r + ord('A') - 1)
         hyps.append(hyp)
 
     logging.info("decode: {}".format(hyps))
@@ -80,7 +80,8 @@ def decode(hidden, cell, seq_len):
     # tokens = torch.zeros(b_sz, seq_len)
     tokens = []
     for i in range(seq_len):
-        cur_token, output, hidden, cell = model.get_next_token(cur_token, hidden, cell)
+        cur_token, output, hidden, cell = model.get_next_token(
+            cur_token, hidden, cell)
         if i != 0:
             collect[i] = output
         # tokens[i] = cur_token
@@ -97,14 +98,14 @@ def decode(hidden, cell, seq_len):
         ret = []
         cur = 0
         for i in range(seq_len):
-            ret.append(ids[cur+offset])
+            ret.append(ids[cur + offset])
             cur += b_sz
         result.append(ret)
     hyps = []
     for ret in result:
         hyp = ''
         for r in ret:
-            hyp += chr(r+ord('A')-1)
+            hyp += chr(r + ord('A') - 1)
         hyps.append(hyp)
 
     logging.info("decode: {}".format(hyps))
@@ -119,14 +120,16 @@ def evaluate(model, seqlen, criterion):
         batched_samples, enc_x, dec_x, y = get_batch(batch_size, seqlen)
         y = y.transpose(0, 1)
         logits = model(enc_x, dec_x, 0)
-        decode_logits(logits.transpose(0,1), batch_size, seqlen)
+        decode_logits(logits.transpose(0, 1), batch_size, seqlen)
 
         # hidden, cell = model.encoder(enc_x)
         # logits = decode(hidden, cell, seqlen)
-        label = [''.join([chr(idx + ord('A') - 1) for idx in exp]) for exp in y.transpose(0,1).tolist()]
+        label = [
+            ''.join([chr(idx + ord('A') - 1) for idx in exp])
+            for exp in y.transpose(0, 1).tolist()
+        ]
         logging.info("label: \t  {}".format(label))
         logging.info("input: \t  {}".format(batched_samples))
-
 
         output_dim = model.decoder.output_dim
         logits = logits[1:].view(-1, output_dim)
@@ -139,7 +142,6 @@ def evaluate(model, seqlen, criterion):
 def train(model, optimizer, seqlen, criterion):
     loss = 0.0
     accuracy = 0.0
-
 
     for step in range(1, 300000):
         """

@@ -64,8 +64,7 @@ class Encoder(nn.Module):
 
 class Decoder(nn.Module):
 
-    def __init__(self, vocab_size, emb_dim, hid_dim, n_layers,
-                 dropout):
+    def __init__(self, vocab_size, emb_dim, hid_dim, n_layers, dropout):
         super().__init__()
 
         self.output_dim = vocab_size
@@ -120,9 +119,6 @@ class Seq2Seq(nn.Module):
         top_v = torch.argmax(output, axis=-1)
 
         return top_v, output, hidden, cell
-
-
-
 
     def forward(self, src, trg, tearcher_forcing_radio=0.8):
         """

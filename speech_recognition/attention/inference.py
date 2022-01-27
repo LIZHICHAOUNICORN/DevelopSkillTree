@@ -86,7 +86,8 @@ if __name__ == "__main__":
 
     encoder = Encoder(hparams["input_dim"], hparams["hid_dim"],
                       hparams["encoder_layers"], hparams["encoder_heads"],
-                      hparams["encoder_pf_dim"], hparams["encoder_dropout"])
+                      hparams["encoder_pf_dim"], hparams["encoder_dropout"],
+                      device)
     logging.debug("encoder: {}".format(encoder))
 
     decoder = Decoder(hparams["output_dim"], hparams["hid_dim"],

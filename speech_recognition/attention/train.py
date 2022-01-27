@@ -50,10 +50,7 @@ EPOCH_NUM = 1000
 LOG_INTERVAL = 10
 CKPT_DIR = "exp/checkpoints/{}"
 
-
-device = torch.device("cuda:0")
-
-def train(model, iterator, optimizer, criterion):
+def train(model, iterator, optimizer, criterion, device):
     model.train()
     epoch_loss = 0
 
@@ -77,7 +74,7 @@ def train(model, iterator, optimizer, criterion):
     return epoch_loss / len(iterator)
 
 
-def evaluate(model, iterator, criterion):
+def evaluate(model, iterator, criterion, device):
     model.eval()
     epoch_loss = 0
     with torch.no_grad():

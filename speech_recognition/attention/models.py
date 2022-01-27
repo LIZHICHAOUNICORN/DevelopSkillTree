@@ -48,7 +48,7 @@ class MultiHeadAttentionLayer(nn.Module):
     >>>>
     """
 
-    def __init__(self, hid_dim, n_heads, dropout=0.1, device="cuda:0"):
+    def __init__(self, hid_dim, n_heads, dropout, device):
         super(MultiHeadAttentionLayer, self).__init__()
 
         assert hid_dim % n_heads == 0, "multi head attetion hid_dim must be divided with n_heads"
@@ -67,21 +67,6 @@ class MultiHeadAttentionLayer(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.scale = torch.sqrt(torch.FloatTensor([self.head_dim])).to(device)
 
-        self.__init_weights()
-
-    def __init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, model="fan_out")
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, std=0.001)
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
 
     def forward(self, query, key, value, mask=None):
         """
@@ -145,20 +130,15 @@ class PositionWiseFeedforwardLayer(nn.Module):
 
     """
 
-    def __init__(self, hid_dim, pf_dim, dropout):
+    def __init__(self, hid_dim, pf_dim, dropout, device):
         super().__init__()
+
+        self.device = device
 
         self.fc_1 = nn.Linear(hid_dim, pf_dim)
         self.fc_2 = nn.Linear(pf_dim, hid_dim)
         self.dropout = nn.Dropout(dropout)
-        self.__init_weights()
 
-    def __init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, std=0.001)
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
 
     def forward(self, x):
         """
@@ -188,24 +168,19 @@ class EncoderLayer(nn.Module):
 
     """
 
-    def __init__(self, hid_dim, n_heads, pf_dim, dropout):
+    def __init__(self, hid_dim, n_heads, pf_dim, dropout, device):
         super().__init__()
+
+        self.device = device
 
         self.self_att_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, self.device)
         self.positionwise_feedforward = PositionWiseFeedforwardLayer(
-            hid_dim, pf_dim, dropout)
+            hid_dim, pf_dim, dropout, self.device)
 
         self.dropout = nn.Dropout(dropout)
 
-    def __init_weights(self):
-        # TODO(zhichaoli) initialize layernorm weights and bias.
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.normal_(m.weight, std=0.001)
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
 
     def forward(self, src, src_mask):
         """
@@ -238,16 +213,19 @@ class DecoderLayer(nn.Module):
 
     """
 
-    def __init__(self, hid_dim, n_heads, pf_dim, dropout):
+    def __init__(self, hid_dim, n_heads, pf_dim, dropout, device):
         super().__init__()
+
+        self.device = device
+
         self.self_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.enc_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, self.device)
         self.encoder_attention = MultiHeadAttentionLayer(
-            hid_dim, n_heads, dropout)
+            hid_dim, n_heads, dropout, self.device)
         self.positionwise_ff = PositionWiseFeedforwardLayer(
-            hid_dim, pf_dim, dropout)
+            hid_dim, pf_dim, dropout, self.device)
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, tgt, enc_src, tgt_mask, src_mask):
@@ -309,8 +287,8 @@ class Encoder(nn.Module):
                  n_heads,
                  pf_dim,
                  dropout,
-                 max_length=64,
-                 device=torch.device("cuda:0")):
+                 device,
+                 max_length=64):
         """
         input_dim: vocab_size
 
@@ -322,7 +300,7 @@ class Encoder(nn.Module):
         self.pos_emb = nn.Embedding(max_length, hid_dim)
 
         self.layers = nn.ModuleList([
-            EncoderLayer(hid_dim, n_heads, pf_dim, dropout)
+            EncoderLayer(hid_dim, n_heads, pf_dim, dropout, self.device)
             for _ in range(n_layers)
         ])
         self.dropout = nn.Dropout(dropout)
@@ -338,7 +316,8 @@ class Encoder(nn.Module):
         src_len = src.shape[1]
         # pos shape: [seq-len] -> [1, seq-len] -> [batch, seq-len]
         # pos shape: [batch, seq-len]
-        pos = torch.arange(0, src_len).unsqueeze(0).repeat(batch_size, 1).to(self.device)
+        pos = torch.arange(0, src_len).unsqueeze(0).repeat(batch_size,
+                                                           1).to(self.device)
 
         # src shape: [batch, seq-len] -> [batch, seq-len, hid_dim]
         # pos_emb shape: [batch, seq-len, hid_dim]
@@ -356,8 +335,8 @@ class Decoder(nn.Module):
 
     Arguments
     ---------
-    attn_dim : int
-        Size of the attention feature.
+    output_dim : int
+        Size of the output dimention.
 
     Example
     -------
@@ -373,7 +352,7 @@ class Decoder(nn.Module):
                  pf_dim,
                  dropout,
                  device,
-                 max_length=128):
+                 max_length=64):
         super().__init__()
 
         self.device = device
@@ -382,7 +361,7 @@ class Decoder(nn.Module):
         self.pos_emb = nn.Embedding(max_length, hid_dim)
 
         self.layers = nn.ModuleList([
-            DecoderLayer(hid_dim, n_heads, pf_dim, dropout)
+            DecoderLayer(hid_dim, n_heads, pf_dim, dropout, self.device)
             for _ in range(n_layers)
         ])
         self.fc_out = nn.Linear(hid_dim, output_dim)
@@ -401,7 +380,8 @@ class Decoder(nn.Module):
         tgt_len = tgt.shape[1]
 
         # pos shape: [seq-len] -> [1, seq-len] -> [batch, seq-len]
-        pos = torch.arange(0, tgt_len).unsqueeze(0).repeat(batch_size, 1).to(self.device)
+        pos = torch.arange(0, tgt_len).unsqueeze(0).repeat(batch_size,
+                                                           1).to(self.device)
         # tgt shape: [batch, seq-len, hid_dim]
         tgt = self.dropout((self.tok_emb(tgt) * self.scale) + self.pos_emb(pos))
 
@@ -418,12 +398,16 @@ class Decoder(nn.Module):
 
 class Seq2Seq(nn.Module):
     """
-    This class implements decoder for seq2seq model.
+    This class implements seq2seq model.
 
     Arguments
     ---------
-    attn_dim : int
-        Size of the attention feature.
+    encoder: torch.nn.Module
+        The encoder layer
+    decoder: torch.nn.Module
+        The decoder layer
+    src_pad_idx: int
+        The id of source.
 
     Example
     -------
@@ -433,11 +417,12 @@ class Seq2Seq(nn.Module):
 
     def __init__(self, encoder, decoder, src_pad_idx, tgt_pad_idx, device):
         super().__init__()
+        self.device = device
+
         self.encoder = encoder
         self.decoder = decoder
         self.src_pad_idx = src_pad_idx
         self.tgt_pad_idx = tgt_pad_idx
-        self.device = device
 
     def make_src_mask(self, src):
         """
@@ -445,7 +430,8 @@ class Seq2Seq(nn.Module):
 
         """
         # src_mask shape: [batch, 1, 1, seq-len]
-        src_mask = (src != self.src_pad_idx).unsqueeze(1).unsqueeze(2)
+        src_mask = (src != self.src_pad_idx).unsqueeze(1).unsqueeze(2).to(
+            self.device)
 
         return src_mask
 
@@ -454,11 +440,13 @@ class Seq2Seq(nn.Module):
         tgt shape: [batch, seq-len]
         """
         # tgt_pad_mask shape: [batch, 1, 1, seq-len]
-        tgt_pad_mask = (tgt != self.tgt_pad_idx).unsqueeze(1).unsqueeze(2).to(self.device)
+        tgt_pad_mask = (tgt != self.tgt_pad_idx).unsqueeze(1).unsqueeze(2).to(
+            self.device)
         tgt_len = tgt.shape[1]
 
         # tgt_sub_mask shape: [seq-len, seq-len]
-        tgt_sub_mask = torch.tril(torch.ones((tgt_len, tgt_len))).bool().to(self.device)
+        tgt_sub_mask = torch.tril(torch.ones(
+            (tgt_len, tgt_len))).bool().to(self.device)
 
         # tgt_mask shape: [batch, 1, 1, seq-len]
         tgt_mask = tgt_pad_mask & tgt_sub_mask
@@ -472,32 +460,16 @@ class Seq2Seq(nn.Module):
 
         """
         # src_mask shape: [batch, 1, 1, seq-len]
-
         src_mask = self.make_src_mask(src)
+
+        # enc_src shape: [batch, seq-len, hid_dim]
+        enc_src = self.encoder(src, src_mask)
 
         # tgt_mask shape: [batch, 1, 1, seq-len]
         tgt_mask = self.make_tgt_mask(tgt)
-        # enc_src shape: [batch, seq-len, hid_dim]
-        enc_src = self.encoder(src, src_mask)
-        # output shape: []
-        # attention shape: []
+
+        # output shape: [batch, seq-len, output-dim]
+        # attention shape: [batch, n_heads, seq-len, seq-len]
         output, attention = self.decoder(tgt, enc_src, tgt_mask, src_mask)
 
         return output, attention
-
-
-if __name__ == "__main__":
-    att = MultiHeadAttentionLayer(16, 8, dropout=0.2)
-    logging.info("MultiHeadAttentionLayer: {} ".format(att))
-
-    input = torch.randn(4, 4, 16)
-    att_out, attention = att(input, input, input)
-    logging.info("att out shape: {}".format(att_out.shape))
-
-    pos_layer = PositionWiseFeedforwardLayer(16, 32, 0.1)
-    logging.info("PositionWiseFeedforwardLayer: {}".format(pos_layer))
-
-    input = torch.randn(4, 8, 16)
-    pos_out = pos_layer(input)
-    logging.info("pos out shape: {}".format(pos_out.shape))
-

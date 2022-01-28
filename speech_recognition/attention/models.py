@@ -9,29 +9,14 @@ Authors
 
 import torch
 import torch.nn as nn
-import torch.optim as optim
 
-import spacy
 import numpy as np
 
-import random
-import math
-import time
 import logging
 
 # TODO(zhichaoli) remove this to yaml
 FORMAT = '%(asctime)s %(filename)s %(funcName)s %(lineno)d %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT)
-
-SEED = 1234
-random.seed(SEED)
-np.random.seed(SEED)
-torch.manual_seed(SEED)
-torch.cuda.manual_seed(SEED)
-torch.backends.cudnn.deterministic = True
-
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# device = torch.device("cuda:0")
 
 
 class MultiHeadAttentionLayer(nn.Module):
@@ -66,7 +51,6 @@ class MultiHeadAttentionLayer(nn.Module):
 
         self.dropout = nn.Dropout(dropout)
         self.scale = torch.sqrt(torch.FloatTensor([self.head_dim])).to(device)
-
 
     def forward(self, query, key, value, mask=None):
         """
@@ -139,7 +123,6 @@ class PositionWiseFeedforwardLayer(nn.Module):
         self.fc_2 = nn.Linear(pf_dim, hid_dim)
         self.dropout = nn.Dropout(dropout)
 
-
     def forward(self, x):
         """
         x shape: [batch, seq-len, hid_dim]
@@ -175,12 +158,12 @@ class EncoderLayer(nn.Module):
 
         self.self_att_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, self.device)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout,
+                                                      self.device)
         self.positionwise_feedforward = PositionWiseFeedforwardLayer(
             hid_dim, pf_dim, dropout, self.device)
 
         self.dropout = nn.Dropout(dropout)
-
 
     def forward(self, src, src_mask):
         """
@@ -221,7 +204,8 @@ class DecoderLayer(nn.Module):
         self.self_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.enc_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, self.device)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout,
+                                                      self.device)
         self.encoder_attention = MultiHeadAttentionLayer(
             hid_dim, n_heads, dropout, self.device)
         self.positionwise_ff = PositionWiseFeedforwardLayer(

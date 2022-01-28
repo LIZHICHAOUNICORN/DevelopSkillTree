@@ -9,15 +9,11 @@ Authors
 
 import torch
 import torch.nn as nn
-import torch.optim as optim
 
-import spacy
 import numpy as np
 
-import random
 import time
 import yaml
-from tqdm import tqdm
 import logging
 
 from dataio import SRC, TGT, train_iterator, valid_iterator
@@ -40,7 +36,6 @@ if __name__ == "__main__":
     assert hparams is not None, "args.config: {} not found".format(args.config)
 
     SEED = hparams["seed"]
-    random.seed(SEED)
     np.random.seed(SEED)
     torch.manual_seed(SEED)
     torch.cuda.manual_seed(SEED)
@@ -75,7 +70,8 @@ if __name__ == "__main__":
     model.apply(initialize_weights)
 
     para_num = count_parameters(model)
-    logging.info("The model has {} trainable parameters, model: {}".format(para_num, model))
+    logging.info("The model has {} trainable parameters, model: {}".format(
+        para_num, model))
 
     optim = torch.optim.Adam(model.parameters(), lr=hparams["hparas"]["lr"])
 
@@ -102,4 +98,5 @@ if __name__ == "__main__":
         if valid_loss < best_valid_loss:
             best_valid_loss = valid_loss
             ckpt_name = "{}.pt".format(epoch)
-            torch.save(model.state_dict(), hparams["ckpt_dir"].format(ckpt_name))
+            torch.save(model.state_dict(),
+                       hparams["ckpt_dir"].format(ckpt_name))

@@ -8,19 +8,13 @@ Authors
 """
 
 import torch
-import torch.nn as nn
-import torch.optim as optim
 
 import spacy
-import numpy as np
 
 from models import Seq2Seq, Encoder, Decoder
 from arguments import parse_arguments
 from dataio import train_data, SRC, TGT
 
-import random
-import math
-import time
 import yaml
 import logging
 

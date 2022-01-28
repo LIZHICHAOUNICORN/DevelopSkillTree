@@ -1,7 +1,7 @@
 
 seed: 1234
 cudnn_deter: True
-device: 'cuda:7'
+device: 'cuda:0'
 
 # Data files
 ckpt_dir: "exp/checkpoints/{}"

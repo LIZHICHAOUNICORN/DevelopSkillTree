@@ -4,7 +4,6 @@ Authors
  * Zhichao Li 2022
 """
 
-import yaml
 import argparse
 
 def parse_arguments():

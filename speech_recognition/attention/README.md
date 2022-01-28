@@ -3,6 +3,15 @@ Seq2Seq  with attention
 使用attention机制建模，使用传统的seq2seq（encoder-decoder）建模
 # Develop envronment
 
+## code style check
+"""
+# check python code style and remove unused package and variable
+
+user$ yapf  --style="google" -i models.py
+user$ pyflakes models.py 
+
+"""
+
 # dataset
 
 # model
@@ -11,7 +20,7 @@ Seq2Seq  with attention
 
 # decode
 
-# result
+# Use
 ```
 
 ```
@@ -33,3 +42,4 @@ Seq2Seq  with attention
 - [ ] 支持DDP   
 - [ ] 将logging统一配置管理  
 - [ ] 将模块内部的main函数移到单元测试  
+- [ ] 引入类型检查

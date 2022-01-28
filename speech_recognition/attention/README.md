@@ -4,13 +4,14 @@ Seq2Seq  with attention
 # Develop envronment
 
 ## code style check
-"""
+
+```
 # check python code style and remove unused package and variable
 
 user$ yapf  --style="google" -i models.py
 user$ pyflakes models.py 
 
-"""
+```
 
 # dataset
 

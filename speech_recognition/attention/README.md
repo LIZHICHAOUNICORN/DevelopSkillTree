@@ -37,10 +37,13 @@ user$ pyflakes models.py
 - [x] 分别支持cpu 和 gpu 调试及训练  
 - [x] 支持真实数据训练以及模拟数据调试  
 - [x] 支持翻译任务及其他任务   
-- [ ] 支持自建模单元粒度  
+- [x] 支持自建模单元粒度(tokenizer 支持bpe以及unigram, char)  
+- [ ] 支持选择音频特征(fbank and mfcc)提取工具
+- [ ] 使用进一步dataset   
+- [ ] 引入wer(edit-distance and alignment)计算工具   
 - [ ] 根据不同layer做权重初始化  
 - [ ] 支持tensorboard  
 - [ ] 支持DDP   
-- [ ] 将logging统一配置管理  
+- [ ] 将logging统一配置管理    
 - [ ] 将模块内部的main函数移到单元测试  
-- [ ] 引入类型检查
+- [ ] 引入类型检查  

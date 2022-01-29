@@ -54,3 +54,4 @@ def display_attention(sentence, translation, attention, n_heads, n_rows,
 
     plt.show()
     plt.close()
+

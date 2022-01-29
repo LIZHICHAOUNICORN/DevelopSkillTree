@@ -11,13 +11,13 @@ best_ckpt: "exp/checkpoints/3.pt"
 max_len: 64
 input_dim: 7853
 output_dim: 5893
-hid_dim: 256
-encoder_layers: 2
-decoder_layers: 2
-encoder_heads: 4
-decoder_heads: 4
-encoder_pf_dim: 128
-decoder_pf_dim: 128
+hid_dim: 128
+encoder_layers: 1
+decoder_layers: 1
+encoder_heads: 2
+decoder_heads: 2
+encoder_pf_dim: 64
+decoder_pf_dim: 64
 encoder_dropout: 0.1
 decoder_dropout: 0.1
 

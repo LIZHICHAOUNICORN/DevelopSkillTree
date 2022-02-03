@@ -77,6 +77,19 @@ cc_binary(
     linkopts = ['-lm', '-lpthread', '-lrt'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
+
+cc_binary(
+    name = "05_thread_local",
+    srcs = ["05_thread_local.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+
 cc_binary(
     name = "06_async_task",
     srcs = ["06_async_task.cc"],
@@ -116,6 +129,21 @@ cc_binary(
 cc_binary(
     name = "09_parallel_algorithm",
     srcs = ["09_parallel_algorithm.cc"],
+    # malloc = "@com_google_tcmalloc//tcmalloc",
+    deps = [
+        '//third_party/glog:glog',
+        '//third_party/gflags:gflags',
+    ],
+    linkopts = ['-lm', '-lpthread', '-lrt'],
+    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
+)
+cc_binary(
+    name = "05_thread_pool",
+    srcs = [
+        "05_thread_pool.h",
+	"05_thread_pool.cc",
+	"05_thread_pool_test.cc"
+    ],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

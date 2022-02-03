@@ -138,7 +138,7 @@ cc_binary(
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
-    name = "05_thread_pool",
+    name = "05_thread_pool_test",
     srcs = [
         "05_thread_pool.h",
 	"05_thread_pool.cc",

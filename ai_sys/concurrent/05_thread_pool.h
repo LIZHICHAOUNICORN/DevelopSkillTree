@@ -4,6 +4,8 @@
 #include <memory>
 #include <mutex>
 #include <thread>
+#include <list>
+#include <condition_variable>
 
 #include "third_party/gflags/include/gflags.h"
 #include "third_party/glog/include/logging.h"
@@ -21,8 +23,8 @@ class Task {
 class ThreadPool final {
  public:
   explicit ThreadPool(int thread_num);
-  ThreadPool(const TaskPool& rhs) = delete;
-  ThreadPool& operator=(const TaskPool& rhs) = delete;
+  ThreadPool(const ThreadPool& rhs) = delete;
+  ThreadPool& operator=(const ThreadPool& rhs) = delete;
   ~ThreadPool();
 
   void Stop();
@@ -34,9 +36,10 @@ class ThreadPool final {
   void thread_func();
 
   std::list<std::shared_ptr<Task>> task_list_;
-  std::vector<std::threads> threads_;
+  std::vector<std::shared_ptr<std::thread>> threads_;
   std::mutex mutex_;
   std::condition_variable cv_;
+  bool running_ = false;
 };
 
 }  // namespace base

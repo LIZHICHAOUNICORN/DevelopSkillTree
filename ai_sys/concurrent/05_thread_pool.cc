@@ -1,4 +1,4 @@
-#include "ai_sys/concurrent/thread_pool.h"
+#include "ai_sys/concurrent/05_thread_pool.h"
 
 #include <memory>
 #include <mutex>
@@ -9,7 +9,7 @@
 
 namespace base {
 
-ThreadPool::ThreadPool(int thread_num) : running_(false) { init(thread_num); }
+ThreadPool::ThreadPool(int thread_num) : running_(false) { Init(thread_num); }
 
 ThreadPool::~ThreadPool() {
   if (running_) {
@@ -20,7 +20,9 @@ ThreadPool::~ThreadPool() {
 }
 
 void ThreadPool::Stop() {
+  LOG(INFO) << "thread pool stop ";
   running_ = false;
+  cv_.notify_all();
 
   for (auto& iter : threads_) {
     if (iter->joinable()) iter->join();
@@ -33,8 +35,8 @@ void ThreadPool::AddTask(Task* task) {
 
   {
     std::lock_guard<std::mutex> guard(mutex_);
-    task_list.push_back(task_ptr);
-    LOG(INFO) << "add a Task." << task_ptr;
+    task_list_.push_back(task_ptr);
+    LOG(INFO) << "add a Task. " << task_ptr;
   }
 
   cv_.notify_one();
@@ -74,7 +76,7 @@ void ThreadPool::Init(int thread_num) {
   for (int i = 0; i < thread_num; ++i) {
     std::shared_ptr<std::thread> thread;
     thread.reset(new std::thread(std::bind(&ThreadPool::thread_func, this)));
-    threads.push_back(thread);
+    threads_.push_back(thread);
   }
 }
 

@@ -157,8 +157,7 @@ cc_binary(
     name = "05_thread_pool_template_test",
     srcs = [
         "05_thread_pool_template.h",
-	    "05_thread_pool_template.cc",
-	    "05_thread_pool_template_test.cc"
+	"05_thread_pool_template_test.cc"
     ],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [

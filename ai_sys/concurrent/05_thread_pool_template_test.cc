@@ -1,17 +1,13 @@
-#include "ai_sys/concurrent/05_thread_pool_template.h"
-
+#include "05_thread_pool_template.h"
 #include <iostream>
+#include <string>
 
-bool GetResult(const std::string& result) {
-  std::cout << result << std::endl;
-  return true;
-}
+std::string task(std::string str) { return "hello " + str; }
 
-int main(int argc, char* argv[]) {
-  base::ThreadPool pool;
-  auto f =
-      pool.EnQueue([](std::string str) { return "hello " + str; }, "world");
-  std::cout << f.get() << std::endl;
-
-  return 0;
+int main() {
+  ThreadPool pool;
+  pool.enqueue([] { std::cout << "hello\n"; });
+  auto future =
+      pool.enqueue([](std::string str) { return "hello " + str; }, "world");
+  std::cout << future.get() << '\n';
 }

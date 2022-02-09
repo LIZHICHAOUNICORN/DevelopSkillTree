@@ -1,4 +1,5 @@
 package(default_visibility = ["//visibility:public"])
+# the g++ must support c++17
 
 cc_binary(
     name = "01_hello_world",

@@ -15,6 +15,7 @@ class SmartPtr {
  private:
   T *_ptr;
   size_t *_count;
+  // std::atomic<int> _count;
 
  public:
   SmartPtr(T *ptr = nullptr) : _ptr(ptr) {

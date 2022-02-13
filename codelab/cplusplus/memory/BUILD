@@ -49,8 +49,8 @@ cc_binary(
 )
 
 cc_binary(
-    name = "uniqure_ptr",
-    srcs = ["smart_ptr.cc"],
+    name = "unique_ptr",
+    srcs = ["unique_ptr.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         '//third_party/glog:glog',

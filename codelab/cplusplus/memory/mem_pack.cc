@@ -6,15 +6,6 @@
 using namespace std;
 #pragma pack(8)
 
-struct A {
-  short var;  // 2 字节
-  int var1;   // 8 字节 （内存对齐原则：填充 2 个字节） 2 (short) + 2 (填充) + 4
-              // (int)= 8
-  long var2;  // 16 字节 8 + 8 (long) = 16
-  char var3;  // 16 字节 （内存对齐原则：填充 3 个字节）16 + 1 (char) + 3 (填充)
-              // = 20
-  string s;   // 48 字节 20 + 8 (string) = 28
-};
 
 // 1. 结构体第一个成员的偏移量（offset）为0，以后每个成员相对于结构体首地址的
 // offset 都是该成员大小与有效对齐值中较小那个的整数倍，

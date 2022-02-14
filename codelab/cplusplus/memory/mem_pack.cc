@@ -40,13 +40,6 @@ int main(int argc, char* argv[]) {
   long var2;
   char var3;
   string s;
-  A ex1;
-  cout << "short var " << sizeof(var) << endl;  // 2 short
-  cout << "int var " << sizeof(var1) << endl;   // 4 int
-  cout << "long var " << sizeof(var2) << endl;  // 8 long
-  cout << "char var " << sizeof(var3) << endl;  // 1 char
-  cout << "string var " << sizeof(s) << endl;   // 8 string
-  cout << "struct A " << sizeof(ex1) << endl;   // 32 struct
 
   A3 a3;
   cout << "struct A3 " << sizeof(a3) << endl;

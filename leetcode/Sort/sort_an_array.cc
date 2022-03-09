@@ -27,14 +27,12 @@ class Solution {
     //下面以右主元为例
     int pivot = nums[r];
     //两个指针,一者移动
-    int i = l, j = l, temp;
+    int i = l, j = l;
     //遍历序列，找主元应该插入的位置
     for (; j < r; j++) {
       //交换
       if (nums[j] < pivot) {
-        temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+        swap(nums[j], nums[i]);
         i++;
       }
     }
@@ -45,7 +43,7 @@ class Solution {
 };
 
 // Heap sort
-class Solution {
+class Solution2 {
   void maxHeapify(vector<int>& nums, int i, int len) {
     for (; (i << 1) + 1 <= len;) {
       int lson = (i << 1) + 1;
@@ -90,7 +88,7 @@ class Solution {
 };
 
 // Merge sort
-class Solution {
+class Solution1 {
   vector<int> tmp;
   void mergeSort(vector<int>& nums, int l, int r) {
     if (l >= r) return;

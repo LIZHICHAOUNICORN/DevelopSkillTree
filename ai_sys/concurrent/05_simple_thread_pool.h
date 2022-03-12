@@ -10,7 +10,8 @@ class SimplePool {
 
   SimplePool(size_t thread_num = std::thread::hardware_concurrency()) {
     for (int i = 0; i < thread_num; ++i) {
-      std::shared_ptr<std::thread> worker(new std::thread(std::bind(&SimplePool::ThreadFunc, this)));
+      std::shared_ptr<std::thread> worker(
+          new std::thread(std::bind(&SimplePool::ThreadFunc, this)));
       workers_.push_back(worker);
     }
   }

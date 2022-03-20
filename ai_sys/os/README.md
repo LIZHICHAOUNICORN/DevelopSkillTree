@@ -10,3 +10,4 @@ Linux 操作系统
 Reference
 =============
 - [x] [linux-note](https://github.com/hsf1002/linux-note)
+- [x] [linux-kernal-map](https://github.com/makelinux/linux_kernel_map.git)

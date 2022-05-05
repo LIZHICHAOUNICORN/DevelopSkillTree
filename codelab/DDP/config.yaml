@@ -1,0 +1,3 @@
+optim: adam
+optim_conf:
+    lr: 0.001

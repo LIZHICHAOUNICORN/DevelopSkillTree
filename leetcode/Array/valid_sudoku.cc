@@ -69,5 +69,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
+  LOG(INFO) << "result";
+  VLOG(1) << "vlog";
   return 0;
 }

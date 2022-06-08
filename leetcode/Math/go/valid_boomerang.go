@@ -5,3 +5,5 @@ func isBoomerang(points [][]int) bool {
     return v1[0]*v2[1] - v1[1]*v2[0] != 0
 
 }
+
+func main() {}

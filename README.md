@@ -118,10 +118,11 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 - [x] 设计基本目录
 - [x] 增加leetcode练习题目
-- [ ] 总结常用设计模式
-- [ ] 总结常用开源代码分析
 - [ ] 总结广告入门学习基础知识
 - [ ] 总结语音相关知识
+- [ ] 总结AI架构工程技术
+- [ ] 开源代码分析
+
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 

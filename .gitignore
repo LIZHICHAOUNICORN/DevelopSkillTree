@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+# Mac
+.DS_Store
+.vscode
+
+# python
+__pycache__

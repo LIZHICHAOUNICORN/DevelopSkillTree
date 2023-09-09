@@ -3,8 +3,8 @@
 #include <string>
 #include <algorithm>
 
-#include "third_party/glog/include/logging.h"
-#include "third_party/gflags/include/gflags.h"
+#include <glog/logging.h>
+#include <gflags/gflags.h>
 
 using std::vector;
 using std::string;

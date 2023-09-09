@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "desig_twitter",
-    srcs = ["desig_twitter.cc"],
+    name = "design_parking_system",
+    srcs = ["design_parking_system.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         "@com_github_google_glog//:glog",

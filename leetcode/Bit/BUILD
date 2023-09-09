@@ -9,7 +9,7 @@ cc_binary(
         "@com_github_gflags_gflags//:gflags",
     ],
     # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-    linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt'],
+    linkopts = [ '-lm', '-lpthread'],
 )
 
 cc_binary(
@@ -21,7 +21,7 @@ cc_binary(
         "@com_github_gflags_gflags//:gflags",
     ],
     # linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-    linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt'],
+    linkopts = [ '-lm', '-lpthread'],
 )
 
 cc_binary(

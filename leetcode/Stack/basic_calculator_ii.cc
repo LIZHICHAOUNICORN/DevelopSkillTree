@@ -1,6 +1,7 @@
 #include <stack>
 #include <string>
 #include <unordered_map>
+#include <numeric>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>

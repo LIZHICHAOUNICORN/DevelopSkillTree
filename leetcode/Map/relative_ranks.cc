@@ -1,12 +1,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <functional>
+#include <map>
+
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
 using std::vector;
 using std::string;
+using namespace std;
 
 // Problem: https://leetcode-cn.com/problems/relative-ranks/
 
@@ -14,7 +18,7 @@ class Solution {
  public:
   vector<string> findRelativeRanks(vector<int>& score) {
     int n = score.size();
-    map<int, int, greater<int>> num2index;
+    map<int, int, std::greater<int>> num2index;
     for (int i = 0; i < n; i++) {
       num2index[score[i]] = i;
     }
@@ -29,7 +33,7 @@ class Solution {
       } else if (i == 2) {
         ans[index] = "Bronze Medal";
       } else
-        ans[index] += to_string(i + 1);
+        ans[index] += std::to_string(i + 1);
       i++;
     }
     return ans;
@@ -40,5 +44,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
+  vector<int> score({0,1,2,3});
+  solu.findRelativeRanks(score);
   return 0;
 }

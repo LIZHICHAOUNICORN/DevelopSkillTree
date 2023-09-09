@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <vector>
+#include <string>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
@@ -8,6 +9,7 @@
 
 using std::vector;
 using std::max;
+using std::string;
 
 // 模拟
 class Solution {
@@ -49,8 +51,5 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-  int ret = solu.maxSubArray(nums);
-  LOG(INFO) << ret;
   return 0;
 }

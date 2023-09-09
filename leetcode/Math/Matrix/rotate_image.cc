@@ -1,7 +1,7 @@
 #include <vector>
 
-#include "third_party/glog/include/logging.h"
-#include "third_party/gflags/include/gflags.h"
+#include <glog/logging.h>
+#include <gflags/gflags.h>
 
 using namespace std;
 // Problem: https://leetcode-cn.com/problems/rotate-image/

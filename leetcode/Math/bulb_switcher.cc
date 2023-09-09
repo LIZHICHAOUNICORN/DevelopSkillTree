@@ -2,6 +2,7 @@
 #include <climits>
 #include <cmath>
 #include <vector>
+#include <numeric>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>

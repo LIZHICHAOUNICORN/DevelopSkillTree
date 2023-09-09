@@ -1,8 +1,9 @@
 #include <vector>
 #include <random>
 
-#include "third_party/glog/include/logging.h"
-#include "third_party/gflags/include/gflags.h"
+#include <glog/logging.h>
+#include <gflags/gflags.h>
+
 
 using namespace std;
 // Problem: https://leetcode-cn.com/problems/random-pick-with-weight/

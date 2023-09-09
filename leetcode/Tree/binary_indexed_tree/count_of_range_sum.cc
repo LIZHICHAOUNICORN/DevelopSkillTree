@@ -48,15 +48,12 @@ public:
 
 
 int main(int argc, char* argv[]) {
-  // google::InitGoogleLogging(argv[0]);
-  // gflags::ParseCommandLineFlags(&argc, &argv, false);
+    //   google::InitGoogleLogging(argv[0]);
+    //   gflags::ParseCommandLineFlags(&argc, &argv, false);
   vector<int> nums = {1,3,5};
 
-  NumArray num_arr(nums);
-  int ret = num_arr.sumRange(0, 2);
-  std::cout << ret << std::endl;
-  num_arr.update(1, 2);
-  ret = num_arr.sumRange(0, 2);
+  Solution solu;
+  int ret = solu.countRangeSum(nums, 0, 2);
   std::cout << ret << std::endl;
 
   return 0;

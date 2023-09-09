@@ -20,7 +20,7 @@ class NestedInteger {
   // nested list.
   bool isInteger() const {
     // pass
-    return true
+    return true;
   }
 
   // Return the single integer that this NestedInteger holds, if it holds a

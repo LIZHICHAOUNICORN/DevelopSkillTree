@@ -1,6 +1,7 @@
 #include <numeric>
 #include <string>
 #include <vector>
+#include <queue>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>

@@ -83,18 +83,6 @@ cc_binary(
 )
 
 cc_binary(
-    name = "inline",
-    srcs = ["inline.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        "@com_github_google_glog//:glog",
-        "@com_github_gflags_gflags//:gflags",
-    ],
-    linkopts = ['-lm', '-lpthread'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
-
-cc_binary(
     name = "union_and_struct",
     srcs = ["union_and_struct.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
@@ -196,17 +184,7 @@ cc_binary(
     linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
-cc_binary(
-    name = "auto",
-    srcs = ["auto.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        "@com_github_google_glog//:glog",
-        "@com_github_gflags_gflags//:gflags",
-    ],
-    linkopts = ['-lm', '-lpthread'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
+
 cc_binary(
     name = "variadic_functions",
     srcs = ["variadic_functions.cc"],

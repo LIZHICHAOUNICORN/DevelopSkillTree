@@ -2,14 +2,16 @@
 // Time: 2021年06月09日
 #include <algorithm>
 #include <iostream>
-#include <map>
+#include <unordered_map>
+#include  <functional>
+
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
 // Problem: https://leetcode-cn.com/problems/integer-break/
 
-using std::map;
+using namespace std;
 
 // Time O(n)
 // Space O(n)

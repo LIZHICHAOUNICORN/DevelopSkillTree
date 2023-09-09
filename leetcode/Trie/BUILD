@@ -117,17 +117,7 @@ cc_binary(
     linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
-cc_binary(
-    name = "words_frequency_lcci",
-    srcs = ["words_frequency_lcci.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        "@com_github_google_glog//:glog",
-        "@com_github_gflags_gflags//:gflags",
-    ],
-    linkopts = ['-lm', '-lpthread'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
+
 cc_binary(
     name = "k_th_smallest_in_lexicographical_order",
     srcs = ["k_th_smallest_in_lexicographical_order.cc"],

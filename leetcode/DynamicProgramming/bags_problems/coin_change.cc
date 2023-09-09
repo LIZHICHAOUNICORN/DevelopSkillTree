@@ -30,7 +30,7 @@ class Solution {
 };
 
 // version 2
-class Solution {
+class Solution1 {
  public:
   int coinChange(vector<int>& coins, int amount) {
     vector<int> dp(amount + 1, INT_MAX);

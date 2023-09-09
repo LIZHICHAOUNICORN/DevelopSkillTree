@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <vector>
+#include <numeric>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
@@ -14,7 +15,7 @@ class UnionFindV1 {
  public:
   UnionFindV1(int max_size) : parent(std::vector<int>(max_size)) {
     // 初始化每一个元素的根节点都为自身
-    iota(parent.begin(), parent.end(), 0);
+    std::iota(parent.begin(), parent.end(), 0);
   }
 
   int Find(int x) { return parent[x] == x ? x : Find(parent[x]); }
@@ -36,7 +37,7 @@ class UnionFind {
   UnionFind(int max_size)
       : parent(std::vector<int>(max_size)),
         rank(std::vector<int>(max_size, 0)) {
-    iota(parent.begin(), parent.end(), 0);
+    std::iota(parent.begin(), parent.end(), 0);
   }
   int Find(int x) { return x == parent[x] ? x : (parent[x] = Find(parent[x])); }
   void Union(int x1, int x2) {

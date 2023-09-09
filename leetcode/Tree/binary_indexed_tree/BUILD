@@ -1,10 +1,9 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "validate_binary_search_tree",
+    name = "count_of_range_sum",
     srcs = [
-        "validate_binary_search_tree.cc",
-        "tree_node.h"
+        "count_of_range_sum.cc",
     ],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [

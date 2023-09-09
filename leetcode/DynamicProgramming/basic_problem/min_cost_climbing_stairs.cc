@@ -1,11 +1,15 @@
 // Author: Zhichao Li
 // Time: 2021年06月08日
 #include <vector>
+#include <functional>
+
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
 // https://leetcode-cn.com/problems/min-cost-climbing-stairs/
+
+using namespace std;
 
 // Time O(n)
 // Space O(1)

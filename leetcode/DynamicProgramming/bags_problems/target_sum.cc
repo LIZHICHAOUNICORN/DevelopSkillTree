@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <numeric>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>

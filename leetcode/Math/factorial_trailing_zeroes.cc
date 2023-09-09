@@ -38,7 +38,7 @@ class Solution {
 };
 
 // math
-class Solution {
+class Solution1 {
  public:
   int trailingZeroes(int n) {
     int ans = 0;

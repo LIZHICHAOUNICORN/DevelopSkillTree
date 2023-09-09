@@ -1,13 +1,14 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <string>
 
 using std::vector;
 
 // base version: 3D DP;
 class Solution {
  public:
-  vector<int> getZerosOnes(string& str) {
+  vector<int> getZerosOnes(std::string& str) {
     vector<int> zerosOnes(2);
     int length = str.length();
     for (int i = 0; i < length; i++) {
@@ -16,7 +17,7 @@ class Solution {
     return zerosOnes;
   }
 
-  int findMaxForm(vector<string>& strs, int m, int n) {
+  int findMaxForm(vector<std::string>& strs, int m, int n) {
     int length = strs.size();
     vector<vector<vector<int>>> dp(
         length + 1, vector<vector<int>>(m + 1, vector<int>(n + 1)));
@@ -27,7 +28,7 @@ class Solution {
         for (int k = 0; k <= n; k++) {
           dp[i][j][k] = dp[i - 1][j][k];
           if (j >= zeros && k >= ones) {
-            dp[i][j][k] = max(dp[i][j][k], dp[i - 1][j - zeros][k - ones] + 1);
+            dp[i][j][k] = std::max(dp[i][j][k], dp[i - 1][j - zeros][k - ones] + 1);
           }
         }
       }
@@ -39,7 +40,7 @@ class Solution {
 // version 2, 2D DP
 class Solution1 {
  public:
-  vector<int> getZerosOnes(string& str) {
+  vector<int> getZerosOnes(std::string& str) {
     vector<int> zerosOnes(2);
     int length = str.length();
     for (int i = 0; i < length; i++) {
@@ -48,7 +49,7 @@ class Solution1 {
     return zerosOnes;
   }
 
-  int findMaxForm(vector<string>& strs, int m, int n) {
+  int findMaxForm(vector<std::string>& strs, int m, int n) {
     int length = strs.size();
     vector<vector<int>> dp(m + 1, vector<int>(n + 1));
     for (int i = 0; i < length; i++) {
@@ -56,7 +57,7 @@ class Solution1 {
       int zeros = zerosOnes[0], ones = zerosOnes[1];
       for (int j = m; j >= zeros; j--) {
         for (int k = n; k >= ones; k--) {
-          dp[j][k] = max(dp[j][k], dp[j - zeros][k - ones] + 1);
+          dp[j][k] = std::max(dp[j][k], dp[j - zeros][k - ones] + 1);
         }
       }
     }

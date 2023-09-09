@@ -152,6 +152,6 @@ int main(int argc, char* argv[]) {
 
   Solution solu;
   auto ret = solu.palindromePairs(words);
-  LOG(INFO) << ret.back();
+  LOG(INFO) << ret.back().back();
   return 0;
 }

@@ -1,8 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary(
-    name = "word_search",
-    srcs = ["word_search.cc"],
+    name = "relative_ranks",
+    srcs = ["relative_ranks.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         "@com_github_google_glog//:glog",

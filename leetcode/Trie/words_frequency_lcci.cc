@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <functional>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
@@ -97,8 +98,5 @@ int main(int argc, char* argv[]) {
   vector<string> products(
       {"mobile", "mouse", "moneypot", "monitor", "mousepad"});
   string search_word("mouse");
-  Solution solu;
-  auto ret = solu.suggestedProducts(products, search_word);
-
   return 0;
 }

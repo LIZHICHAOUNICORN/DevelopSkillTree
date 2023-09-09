@@ -1,7 +1,7 @@
 package(default_visibility = ["//visibility:public"])
 cc_binary(
-    name = "implement_trie_prefix_tree",
-    srcs = ["implement_trie_prefix_tree.cc"],
+    name = "implement_bitmap",
+    srcs = ["implement_bitmap.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
         "@com_github_google_glog//:glog",

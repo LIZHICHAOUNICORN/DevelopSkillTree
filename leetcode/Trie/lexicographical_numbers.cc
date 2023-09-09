@@ -11,6 +11,7 @@ using std::vector;
 using std::string;
 using std::unordered_map;
 using std::unordered_set;
+using namespace std;
 
 // DFS
 class Solution {
@@ -34,7 +35,7 @@ class Solution1 {
   vector<int> lexicalOrder(int n) {
     vector<string> strs;
     for (int i(1); i <= n; i++) {
-      strs.push_back(to_string(i));
+      strs.push_back(std::to_string(i));
     }
     sort(strs.begin(), strs.end());
     vector<int> res;

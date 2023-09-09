@@ -33,8 +33,9 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-  int ret = solu.maxSubArray(nums);
+  vector<int> nums1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+  vector<int> nums2 = {-2, 1, -3, 4, -1, 1, -5, 4};
+  int ret = solu.maxUncrossedLines(nums1, nums2);
   LOG(INFO) << ret;
   return 0;
 }

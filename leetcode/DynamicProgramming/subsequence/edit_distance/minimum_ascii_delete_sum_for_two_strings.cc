@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <numeric>
 
 #include <gflags/gflags.h>
 #include <glog/logging.h>
@@ -9,6 +10,7 @@
 using std::vector;
 using std::string;
 using std::min;
+using namespace std;
 
 // Problem:
 // https://leetcode-cn.com/problems/minimum-ascii-delete-sum-for-two-strings/
@@ -70,7 +72,7 @@ int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
   gflags::ParseCommandLineFlags(&argc, &argv, false);
   Solution solu;
-  int dis = solu.minDistance("horse", "ros");
+  int dis = solu.minimumDeleteSum("horse", "ros");
   LOG(INFO) << "ret: " << dis;
   return 0;
 }

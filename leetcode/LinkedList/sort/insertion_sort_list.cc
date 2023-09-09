@@ -1,5 +1,5 @@
-#include "third_party/glog/include/logging.h"
-#include "third_party/gflags/include/gflags.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // Problems: https://leetcode-cn.com/problems/insertion-sort-list/
 

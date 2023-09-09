@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <vector>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 using std::vector;
 using std::sort;

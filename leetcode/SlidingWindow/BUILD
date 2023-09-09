@@ -5,10 +5,10 @@ cc_binary(
     srcs = ["find_all_anagrams_in_a_string.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -17,10 +17,10 @@ cc_binary(
     srcs = ["minimum_window_substring.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -29,9 +29,9 @@ cc_binary(
     srcs = ["longest_substring_without_repeating_characters.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )

@@ -1,5 +1,5 @@
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // Problem:
 // https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/

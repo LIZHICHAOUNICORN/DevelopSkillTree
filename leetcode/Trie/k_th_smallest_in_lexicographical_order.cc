@@ -1,7 +1,7 @@
 #include <algorithm>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // Problem: https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/
 // Solutions: https://www.bilibili.com/video/BV1q5411A7fU?p=1

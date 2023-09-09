@@ -5,10 +5,10 @@ cc_binary(
     srcs = ["group_anagrams.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -17,10 +17,10 @@ cc_binary(
     srcs = ["destination_city.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -29,10 +29,10 @@ cc_binary(
     srcs = ["repeated_dna_sequences.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -41,10 +41,10 @@ cc_binary(
     srcs = ["next_greater_element_i.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -53,10 +53,10 @@ cc_binary(
     srcs = ["longest_harmonious_subsequence.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -64,10 +64,10 @@ cc_binary(
     srcs = ["max_points_on_a_line.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -75,10 +75,10 @@ cc_binary(
     srcs = ["count_special_quadruplets.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -86,9 +86,9 @@ cc_binary(
     srcs = ["palindrome_pairs.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )

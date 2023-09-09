@@ -6,10 +6,10 @@ cc_binary(
     srcs = ["01_hello_world.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -17,10 +17,10 @@ cc_binary(
     srcs = ["01_thread.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -28,10 +28,10 @@ cc_binary(
     srcs = ["02_thread_self_manage.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -39,10 +39,10 @@ cc_binary(
     srcs = ["03_call_once.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -50,10 +50,10 @@ cc_binary(
     srcs = ["04_deadlock_transfer.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -61,10 +61,10 @@ cc_binary(
     srcs = ["04_normal_transfer.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -72,10 +72,10 @@ cc_binary(
     srcs = ["05_transfer_wait_notify.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -84,10 +84,10 @@ cc_binary(
     srcs = ["05_thread_local.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -96,10 +96,10 @@ cc_binary(
     srcs = ["06_async_task.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -108,10 +108,10 @@ cc_binary(
     srcs = ["07_packaged_task.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -120,10 +120,10 @@ cc_binary(
     srcs = ["08_promise_future.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -132,10 +132,10 @@ cc_binary(
     srcs = ["09_parallel_algorithm.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
@@ -147,10 +147,10 @@ cc_binary(
     ],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
@@ -162,9 +162,9 @@ cc_binary(
     ],
     # malloc = "@com_google_tcmalloc//tcmalloc",
     deps = [
-        '//third_party/glog:glog',
-        '//third_party/gflags:gflags',
+        "@com_github_google_glog//:glog",
+        "@com_github_gflags_gflags//:gflags",
     ],
-    linkopts = ['-lm', '-lpthread', '-lrt'],
+    linkopts = ['-lm', '-lpthread'],
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )

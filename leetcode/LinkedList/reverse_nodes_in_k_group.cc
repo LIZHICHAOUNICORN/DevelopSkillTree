@@ -3,8 +3,8 @@
 
 // #include "leetcode/LinkedList/create_linked_list.h"
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // https://leetcode-cn.com/problems/reverse-nodes-in-k-group/solution/5fen-dai-ma-ji-jian-cdai-ma-by-fengziluo-ucsi/
 

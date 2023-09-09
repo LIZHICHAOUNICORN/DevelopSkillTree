@@ -4,8 +4,8 @@
 #include <mutex>
 #include <thread>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 namespace base {
 

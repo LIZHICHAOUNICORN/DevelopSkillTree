@@ -1,7 +1,7 @@
 #include "ai_sys/design_patterns/create/singleton_template.h"
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 class Model : public util::SingleTon<Model> {
   friend SingleTon<Model>;

@@ -2,8 +2,8 @@
 // Time: 2021年06月08日
 #include <vector>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // https://leetcode-cn.com/problems/min-cost-climbing-stairs/
 

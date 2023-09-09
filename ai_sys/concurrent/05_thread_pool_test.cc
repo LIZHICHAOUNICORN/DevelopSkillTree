@@ -2,8 +2,8 @@
 
 #include "ai_sys/concurrent/05_thread_pool.h"
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);

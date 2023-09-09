@@ -1,8 +1,8 @@
 #include <bitset>
 #include <iostream>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // #define UINT64_C(v)  (v ## ULL)
 

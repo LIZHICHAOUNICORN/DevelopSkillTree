@@ -1,5 +1,5 @@
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 #include "leetcode/Designing_data_structures/List/double_linked_list.h"
 

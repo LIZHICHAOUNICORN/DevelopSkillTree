@@ -1,7 +1,7 @@
 #include "leetcode/String/Algorithms/boyer_moore.h"
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 DEFINE_string(src, "asdfadsfasdfabcabd", "src string");
 DEFINE_string(pattern, "abcabd", "pattern string");

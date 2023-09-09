@@ -1,5 +1,5 @@
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 DEFINE_int32(reverse_input_size, 0, "input data size");
 

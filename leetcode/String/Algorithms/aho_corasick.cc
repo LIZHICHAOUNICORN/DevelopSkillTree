@@ -7,8 +7,8 @@
 #include <utility>
 #include <vector>
 
-#include "third_party/gflags/include/gflags.h"
-#include "third_party/glog/include/logging.h"
+#include <gflags/gflags.h>
+#include <glog/logging.h>
 
 // from: https://www.bilibili.com/video/BV1uJ411Y7Eg?p=1
 // https://leetcode-cn.com/problems/multi-search-lcci/solution/kmpsuan-fa-zi-dian-shu-aczi-dong-ji-by-j-kir5/

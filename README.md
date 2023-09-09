@@ -80,6 +80,7 @@ This repository is a collection of open-source implementation of a variety of al
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [glog](https://github.com/google/glog)
+* [gflags](https://github.com/gflags/gflags)
 * [bazel](https://bazel.build/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -98,6 +99,10 @@ This is an example of how to list things you need to use the software and how to
 * git
   ```sh
   git clone https://github.com/LIZHICHAOUNICORN/Toolkits.git
+  cd Toolkits
+  bazel clean --expunge
+  bazel build //leetcode/...
+  bazel build //codelab/...
   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -117,7 +122,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 ## Roadmap
 
 - [x] 设计基本目录
-- [x] 增加leetcode练习题目
+- [x] leetcode练习题目
 - [ ] 总结广告入门学习基础知识
 - [ ] 总结语音相关知识
 - [ ] 总结AI架构工程技术

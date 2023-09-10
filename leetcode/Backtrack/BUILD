@@ -82,17 +82,6 @@ cc_binary(
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 cc_binary(
-    name = "24_game",
-    srcs = ["24_game.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        "@com_github_google_glog//:glog",
-        "@com_github_gflags_gflags//:gflags",
-    ],
-    linkopts = ['-lm', '-lpthread'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
-cc_binary(
     name = "frog_jump",
     srcs = ["frog_jump.cc"],
     # malloc = "@com_google_tcmalloc//tcmalloc",

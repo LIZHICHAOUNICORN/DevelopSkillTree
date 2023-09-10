@@ -47,17 +47,6 @@ cc_binary(
     #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
 )
 
-cc_binary(
-    name = "lexicographical_numbers",
-    srcs = ["lexicographical_numbers.cc"],
-    # malloc = "@com_google_tcmalloc//tcmalloc",
-    deps = [
-        "@com_github_google_glog//:glog",
-        "@com_github_gflags_gflags//:gflags",
-    ],
-    linkopts = ['-lm', '-lpthread'],
-    #linkopts = [ '-lunwind', '-lm', '-lpthread', '-lrt', '-ltcmalloc_and_profiler'],
-)
 
 cc_binary(
     name = "maximum_xor_of_two_numbers_in_an_array",
